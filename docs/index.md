@@ -1,45 +1,45 @@
 ---
-title: Kooliarvuti JUKU igavene digitaalne elu
+title: The eternal digital life of the school computer JUKU
 ---
 
 [![Juku3000](images/juku3000_ruut_valge.svg#only-dark){align=right width=50%}](https://infoaed.ee/juku/)
 [![Juku3000](images/juku3000_ruut_must.svg#only-light){align=right width=50%}](https://infoaed.ee/juku/)
 
-**Meie eesmärk on lasta tulevatel põlvedel elavalt kogeda Eesti arvutite esiajalugu — legendaarne 1990ndate kooliarvuti JUKU peab olema kasutatav ka aastal 3000!**
+**Our goal is to let future generations vividly experience the early history of Estonian computing — the legendary 1990s school computer JUKU must remain usable even in the year 3000!**
 
-Kuigi füüsilisi JUKUsid toodeti 1988-1992 tuhandeid, on tänapäeval lihtsam JUKU kogemusest osa saada emulaatori vahendusel, mis jookseb [tavalises arvutis](mame-käivitamine.md) või isegi [veebibrauseris](https://infoaed.ee/juku/).
+Although thousands of physical JUKUs were produced between 1988–1992, today it is easier to experience JUKU through an emulator running on [an ordinary computer](mame-käivitamine.md) or even in [a web browser](https://infoaed.ee/juku/).
 
-Siia leheküljele on koondatud hulk JUKUt puudutavat dokumentatsiooni jm materjali, aga saidi olemasolu põhjuseks on soov JUKU arvuti eri mudeleid jooksutada tänapäevasel riistvaral ehk neid "[emuleerida](https://et.wikipedia.org/wiki/Emulaator)".
+This site collects a wide range of JUKU-related documentation and other materials, but the underlying reason for its existence is the desire to run the various JUKU models on modern hardware — that is, to "[emulate](https://en.wikipedia.org/wiki/Emulator)" them.
 
-Kui sa juhtimisi üldse ei tea, mis on JUKU, siis on aeg heita pilk [Vikipeediasse](https://et.wikipedia.org/wiki/Juku_(arvuti)), [Elektroonikamuuseumi](https://elektroonikamuuseum.ee/juku_arvuti_lugu.html) või tutvuda meie [JUKU ajajoonega](ajajoon.md). JUKU tarkvara ökosüsteemist annavad illustreeritud ülevaate [slaidid informaatika-olümpiaadi sügiseselt õppesessioonilt 2024](https://p6drad-teel.net/~p6der/juku-hingeelu_2024_videota.pdf).
+If you have no idea what JUKU is, it's time to take a look at [Wikipedia](https://et.wikipedia.org/wiki/Juku_(arvuti)), the [Estonian Museum of Electronics](https://elektroonikamuuseum.ee/juku_arvuti_lugu.html), or to get acquainted with our [JUKU timeline](ajajoon.md). An illustrated overview of the JUKU software ecosystem is given in [the slides from the 2024 autumn study session of the Estonian Informatics Olympiad](https://p6drad-teel.net/~p6der/juku-hingeelu_2024_videota.pdf).
 
-JUKU emuleerimise algatus JUKU 3000 nime all käivitati sügisel 2017 Garage48 häkatoni "[Elamused ja ekspositsioonid](https://garage48.org/blog/garage48-elamused-ja-ekspositsioonid-toi-tahed-taevast-raputas-ja-pani-nostalgitsema-voitja-on-ta)" raames.
+The JUKU emulation initiative under the name JUKU 3000 was launched in the autumn of 2017 as part of the Garage48 hackathon "[Experiences and Expositions](https://garage48.org/blog/garage48-elamused-ja-ekspositsioonid-toi-tahed-taevast-raputas-ja-pani-nostalgitsema-voitja-on-ta)".
 
-Olulisi linke:
+Important links:
 
-* [Arti Zirki JUKU materjalid](https://arti.ee/juku/)
-* [ELFA foorumi oluline JUKU teema](https://www.elfafoorum.eu/forum/tehnikafoorumid/tark-ja-riistvara-foorum/64851-)
-* Elektroonikamuuseumi [JUKU failid](https://elektroonikamuuseum.ee/failid/juku/) ja [tarkvara galerii](https://elektroonikamuuseum.ee/juku_arvuti_tarkvara.html)
-* [ZX форум äärmiselt kasulik Juku E5101 lõim](https://zx-pk.ru/threads/27298-juku-e5101.html) (vene keeles)
-* [JUKU 3000 GitHubi varamu](https://github.com/infoaed/juku3000) (selle saidi toormaterjal ja ajalugu)
+* [Arti Zirk's JUKU materials](https://arti.ee/juku/)
+* [The important JUKU thread on the ELFA forum](https://www.elfafoorum.eu/forum/tehnikafoorumid/tark-ja-riistvara-foorum/64851-)
+* The Museum of Electronics [JUKU files](https://elektroonikamuuseum.ee/failid/juku/) and [software gallery](https://elektroonikamuuseum.ee/juku_arvuti_tarkvara.html)
+* [Extremely useful Juku E5101 thread on the ZX forum](https://zx-pk.ru/threads/27298-juku-e5101.html) (in Russian)
+* [JUKU 3000 GitHub repository](https://github.com/infoaed/juku3000) (the raw material and history of this site)
 
-Asjassepuutuvaid ettevõtmisi:
+Related initiatives:
 
-* [Elektroonikamuuseum](https://elektroonikamuuseum.ee/)
-* [Tartu Ülikooli arvutimuuseuum](http://arvutimuuseum.ut.ee/)
-* [Tallinna arvutimuuseum](http://arvutimuuseum.ee/)
+* [Museum of Electronics](https://elektroonikamuuseum.ee/)
+* [University of Tartu Computer Museum](http://arvutimuuseum.ut.ee/)
+* [Tallinn Computer Museum](http://arvutimuuseum.ee/)
 * [Retroklubi/Retrocomputing Estonia](http://pushspace.com/)
-* [LVLup! videomängude muuseum](https://www.rara.ee/meist/asukohad/#lvlup-videomangude-muuseum)
-* [Unistused ja tegelikkus. 90ndate lapsepõlv](https://web.archive.org/web/20180204224850/https://www.mm.ee/naitused/naitus-unistused-ja-tegelikkus-90ndate-lapsepolv) (Tartu Mänguasjamuuseumi näitus)
-* [Mängime?! Arvutimängud Prantsusmaalt ja Saksamaalt](https://web.archive.org/web/20170825094230/https://kumu.ekm.ee/arhiiv/naitused-2013/mangime-arvutimangud-prantsusmaalt-ja-saksamaalt/) (Kumu arvutimängude näitus)
-* [RAM. Eesti varane arvutikunst](https://kumu.ekm.ee/syndmus/ram-eesti-varane-arvutikunst/) (Kumu arvutigraafika näitus)
-* [Näiteid Eesti varasest arvutikunstist](https://bluecat.ee/2013/06/naiteid-eesti-varasest-arvutikunstist/) (Tuuli Lepik/Bluecat)
-* [END IF ehk varane arvutikunst ja uute meediate algus Eestis 1960.-1995. a](https://web.archive.org/web/20070609112438/http://e-media.artun.ee/inimesed/magistritood/TuuliLepikMA.pdf) (Tuuli Lepiku magistritöö)
-* [Eestikeelete mängude Discord](https://discord.gg/nQvCGeNPhr) (Pait Gaming jt)
-* [Kassettilamerit](https://kasettilamerit.fi/en/about/) (Soome unarvara taastajate sait)
-* [Kallion tietokonemuseo](https://www.kalliontietokonemuseo.fi/en/) (Arvutimuuseum Helsingis)
-* [Suomen ensimmäinen pelimuseo avataan Tampereella](https://yle.fi/uutiset/3-9354287) (Arvutimängude muuseum Tamperes)
-* [Videospēļu muzejs](https://vgm.lv/en/) (Arvutimängude muuseum Riias)
-* [Skaitļošanas tehnikas un informātikas muzejs](https://www.lumii.lv/35/130s/) (Läti Ülikooli arvutustehnika ja informaatika muuseum Riias)
-* [Datoru muzejs](https://www.pchistory.lv/) (Arvutimuuseum Siguldas)
-* [Музей советских игровых автоматов](https://15kop.ru/) (NSVLi mänguautomaatide muuseum Peterburis)
+* [LVLup! video game museum](https://www.rara.ee/meist/asukohad/#lvlup-videomangude-muuseum)
+* [Dreams and reality. Childhood in the 90s](https://web.archive.org/web/20180204224850/https://www.mm.ee/naitused/naitus-unistused-ja-tegelikkus-90ndate-lapsepolv) (exhibition at the Tartu Toy Museum)
+* [Let's play?! Computer games from France and Germany](https://web.archive.org/web/20170825094230/https://kumu.ekm.ee/arhiiv/naitused-2013/mangime-arvutimangud-prantsusmaalt-ja-saksamaalt/) (Kumu computer game exhibition)
+* [RAM. Early Estonian computer art](https://kumu.ekm.ee/syndmus/ram-eesti-varane-arvutikunst/) (Kumu computer graphics exhibition)
+* [Examples of early Estonian computer art](https://bluecat.ee/2013/06/naiteid-eesti-varasest-arvutikunstist/) (Tuuli Lepik/Bluecat)
+* [END IF, or early computer art and the beginning of new media in Estonia 1960–1995](https://web.archive.org/web/20070609112438/http://e-media.artun.ee/inimesed/magistritood/TuuliLepikMA.pdf) (Tuuli Lepik's master's thesis)
+* [Discord for Estonian-language games](https://discord.gg/nQvCGeNPhr) (Pait Gaming and others)
+* [Kassettilamerit](https://kasettilamerit.fi/en/about/) (Finnish abandonware restorers' site)
+* [Kallion tietokonemuseo](https://www.kalliontietokonemuseo.fi/en/) (computer museum in Helsinki)
+* [Finland's first game museum opens in Tampere](https://yle.fi/uutiset/3-9354287) (computer game museum in Tampere)
+* [Videospēļu muzejs](https://vgm.lv/en/) (computer game museum in Riga)
+* [Skaitļošanas tehnikas un informātikas muzejs](https://www.lumii.lv/35/130s/) (Computing and Informatics Museum of the University of Latvia in Riga)
+* [Datoru muzejs](https://www.pchistory.lv/) (computer museum in Sigulda)
+* [Музей советских игровых автоматов](https://15kop.ru/) (Museum of Soviet Arcade Machines in St. Petersburg)

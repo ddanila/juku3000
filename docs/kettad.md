@@ -1,27 +1,27 @@
-# Kuidas lugeda/kirjutada JUKU ketaste tõmmiseid?
+# How to read/write JUKU disk images?
 
-__Aastal 2022 ei olnud veel dokumenteeritud, millega ja kuidas lugeda JUKU kahepoolseid flopisid ja huvilised katsetasid kettatõmmiste lugemist eri tööriistadega, saavutades mõnedega neist osalist edu. Allolev on kogemuslugu sellest, kuidas võtsin kätte ja närisin end läbi JUKU flopiketta andmevormingust, mida selle käigus õppisin ja pidasin vajalikuks avalikkusega jagada. Lugu on täiendatud üldistava raamistuse, täpsemate arvutuste ja praktiliste soovitustega lõpuosas.__
+__In 2022 it was not yet documented how, and with what, to read JUKU's double-sided floppies; enthusiasts experimented with various tools for reading disk images, achieving partial success with some. What follows is an experience report of how I went and gnawed my way through the JUKU floppy disk's data format, what I learned in the process, and what I felt was worth sharing publicly. The story is rounded off at the end with a more general framework, more precise calculations, and practical recommendations.__
 
-JUKU 786/788 kB kettad on kahepoolsed topelttihedusega (DSDD) kettad, millel on kummalgi poolel 80 rada, mis on jaotatud 40 sektorisse, millest igaüks mahutab 128 baiti. See teeb kokku 2x80 = 160 rada, 40x128 = 5120 baiti ehk 5 kB ja kokku ketta suuruseks 160x5120 = 819 200 baiti ehk 819 kB. Lugemise teeb keerukaks, et need baidid pole talletatud sisu mõttes mitte järjest, vaid "[segamini paisatud](https://www.seasip.info/Cpm/skew.html)". Seetõttu ei või seda võtta järjestikuse 819 kB andmekogumina ja selle osiste olemasolu ignoreerida, vaid tuleb segadus selle eri taseme põhjusest lähtuvalt likvideerida.
+JUKU 786/788 kB disks are double-sided double-density (DSDD) disks, each side of which has 80 tracks divided into 40 sectors of 128 bytes each. That gives 2×80 = 160 tracks total, 40×128 = 5120 bytes (5 kB) per track, and a total disk size of 160×5120 = 819,200 bytes, or 819 kB. What makes reading them complicated is that those bytes are not stored content-wise in sequence, but "[scrambled](https://www.seasip.info/Cpm/skew.html)". Therefore we cannot treat the disk as a sequential 819 kB blob and ignore its substructure; the scrambling has to be undone at the level where it was introduced.
 
-Töö teevad ära [_cpmtools_](http://www.moria.de/~michael/cpmtools/) ja [_libdsk_](https://www.seasip.info/Unix/LibDsk/) käsikäes ning vajalikud konfifailid on:
+The work is done by [_cpmtools_](http://www.moria.de/~michael/cpmtools/) and [_libdsk_](https://www.seasip.info/Unix/LibDsk/) hand in hand, and the required config files are:
 
-* [diskdefs](https://github.com/infoaed/juku3000/blob/master/src/diskdefs) (võib käia nt `/etc/cpmtools` või `/usr/local/share` alla)
-* [libdskrc](https://github.com/infoaed/juku3000/blob/master/src/libdskrc) (võib käia nt `/usr/local/share/LibDsk` alla või kodukataloogi kujul `.libdskrc`)
+* [diskdefs](https://github.com/infoaed/juku3000/blob/master/src/diskdefs) (may live for example under `/etc/cpmtools` or `/usr/local/share`)
+* [libdskrc](https://github.com/infoaed/juku3000/blob/master/src/libdskrc) (may live for example under `/usr/local/share/LibDsk` or in the home directory as `.libdskrc`)
 
-Aga huvilistele ka veidi pikemalt köögipoolest...
+But for the curious, a little more on the inner workings...
 
 FDMAINT             |  DEC Rainbow 100
 :-------------------------:|:-------------------------:
-![FDMAINT ketast kontrollimas, väljast sisse ja üks pool korraga](/images/disk5.png)  |  ![DEC Rainbow 100 manuaal](/images/rainbow-logo.png)
+![FDMAINT checking the disk, outside-in, one side at a time](/images/disk5.png)  |  ![DEC Rainbow 100 manual](/images/rainbow-logo.png)
 
-JUKU jaoks fundamentaalsel opsüsteemi tasemel lähtutakse CP/Mi [128-baidisest sektorisuurusest](https://en.wikipedia.org/wiki/CP/M#Basic_Input_Output_System), mis tähendab, et rajad on kettal jagatud 40 sektorisse ja iga rada on 40x128 = 5120 baiti. Füüsilisel JUKU flopil on rajad aga jagatud 10 sektorisse, mille kaupa [arvutatakse ja kirjutatakse tegelikule füüsilisele kettale](https://en.wikipedia.org/wiki/Modified_frequency_modulation#MFM_coding) andmete kontrollsummad. See tähendab, et füüsilisel kettal on CP/Mi 128-baidised sektorid omakorda koondatud neljakaupa 512 baidistesse sektoritesse, st raja maht on 10x4x128 = 10x512 = 5120 baiti. Kuna andmete kodeerimine/dekodeerimine flopi magnetpinnalt on [korraldatud riistvara tasemel](https://en.wikipedia.org/wiki/Western_Digital_FD1771), siis ei pea andmetõmmiste töötlemisel füüsilise flopiketta omadustele tähelepanu pöörama ning võib piirduda opsüsteemi tasemel kättesaadava andmete vorminguga.
+At the fundamental OS level for JUKU, the starting point is CP/M's [128-byte sector size](https://en.wikipedia.org/wiki/CP/M#Basic_Input_Output_System), which means that the tracks on the disk are divided into 40 sectors and each track is 40×128 = 5120 bytes. On a physical JUKU floppy, however, the tracks are divided into 10 sectors, and it is in those units that the checksums of the data are [computed and written to the actual physical disk](https://en.wikipedia.org/wiki/Modified_frequency_modulation#MFM_coding). That is, on the physical disk CP/M's 128-byte sectors are themselves grouped four at a time into 512-byte sectors, so the track size is 10×4×128 = 10×512 = 5120 bytes. Since encoding/decoding the data on the floppy's magnetic surface is [handled at the hardware level](https://en.wikipedia.org/wiki/Western_Digital_FD1771), when processing disk images one does not have to pay attention to the properties of the physical floppy disk and can limit oneself to the data format available at the OS level.
 
-Kasutusel oleva [CP/Mi failisüsteemi](https://en.wikipedia.org/wiki/CP/M#File_system) loogilise ploki suurus on 4096 baiti, igasse sellisesse plokki mahub 32 sektorit, loogilisi plokke mahub kogu ketta mahu sisse 819200/4096 = 200. Ketta kaks esimest rada on reserveeritud süsteemi buutimiseks ja seetõttu jääb loogiliste plokkide jaoks reaalselt 819200 - 2x5120 = 808 960 baiti, mis mahutab 808960/4096 = 197,5 loogilist plokki, mis oleks kokku 197,5x4096 / 1024 = 790 kB. Poolikut loogilist plokki kettale kirjutada pole tark mõte ja kuna esimene loogiline plokk on kasutusel kataloogiplokina, siis tegelike failide jaoks kasutatavaid plokke mahub kettale 196. Seega on JUKU ketta tegelik kasutatav maht 196x4096 = 802 816 baiti, mis on omakorda 802816/1024 = 784 kB. Kuna loogilise ploki maht on 32x128 = 4096 baiti ja füüsilise raja maht on 40x128 = 5120 baiti, siis isegi kui üks on neist on lihtsalt 4 kB ja teine 5 kB, siis kettaga toimetamise eri tasmetel eri ühikutega opereerimine muudab üldpildi kettatõmmiste töötlemisel segaseks ning teeb keerukamaks andmete struktuuri tuletamise nende sisust.
+The [CP/M file system](https://en.wikipedia.org/wiki/CP/M#File_system) in use has a logical block size of 4096 bytes; each such block holds 32 sectors, and 819200/4096 = 200 logical blocks fit in the disk's total capacity. The first two tracks of the disk are reserved for booting the system, so 819200 − 2×5120 = 808,960 bytes actually remain for logical blocks, which holds 808960/4096 = 197.5 logical blocks, or 197.5×4096 / 1024 = 790 kB. It's not wise to write a half logical block to disk, and since the first logical block is used as the directory block, only 196 blocks remain for actual file data. So the actual usable capacity of a JUKU disk is 196×4096 = 802,816 bytes, which is 802816/1024 = 784 kB. Because the logical block is 32×128 = 4096 bytes and the physical track is 40×128 = 5120 bytes, even though one is simply 4 kB and the other 5 kB, operating at different levels with different units makes the overall picture of disk-image processing confusing and complicates deriving the data structure from the contents.
 
-## JUKU ketaste spetsiifiline topeltsegadus
+## The specific double-confusion of JUKU disks
 
-JUKU EKDOS 2.30 lähtekoodi päises on [dokumenteeritud rasvases kirjas](https://github.com/infoaed/juku3000/blob/master/src/EKDOS30.ASM), et ketta formaadi aluseks on [DEC Rainbow 100](http://www.bitsavers.org/pdf/dec/rainbow/QV069-GZ_Rainbow_100+_100B_Technical_Documentation_Apr85.pdf) flopiformaat. Lähtekood annab ka teada ülejäänud [juba mainitud parameetrid](https://github.com/infoaed/juku3000/blob/master/src/EKDOS30.ASM#L51-L57):
+The header of the JUKU EKDOS 2.30 source code [documents in bold](https://github.com/infoaed/juku3000/blob/master/src/EKDOS30.ASM) that the disk format is based on the [DEC Rainbow 100](http://www.bitsavers.org/pdf/dec/rainbow/QV069-GZ_Rainbow_100+_100B_Technical_Documentation_Apr85.pdf) floppy format. The source code also gives the [parameters already mentioned](https://github.com/infoaed/juku3000/blob/master/src/EKDOS30.ASM#L51-L57):
 
 ```
 ; DPB constants for 5" 96 TPI DSDD diskettes (2x80 tracks):
@@ -33,9 +33,9 @@ DIRENT	EQU	128	; directory entries
 DIRCHK	EQU	20H
 ```
 
-Need vastavad üldjoontes ülal tehtud arvutustele, kuigi kommentaaris toodud tehte `(TRACKS-DIRTRK)*CPMSPT/(BLKSIZ/128)-1` tulemuseks oleks tegelikult 196,5, millest on justkui ümardamise teel saadud 197. Koodis kasutatud väärtus on küll korrektne, aga selgituseks toodud tehe võib olla põhjuseks, miks toob opsüsteem JUKU flopiketta kasutatavaks mahuks 786 kB, sest 196,5x4096 = 804864 baiti, mille järel 804864/1024 = 786 kB. Reaalsuses mahub aga JUKU flopile kas 784 kB jagu faile või 788 kB jagu loogilisi plokke koos kataloogiplokiga. Lisanduv poolik loogiline plokk on opsüsteemile kättesaadav ja seega pole avakraanil toodud osutused 786 kB ketastele otseselt valed, aga ei JUKU enda ega CP/Mi tarkvara ei suuda üldiselt fantoomploki 2048 baidiga korrektselt ümber käia ning parimal juhul saab seda kasutada salajaste sõnumite talletamiseks.
+These broadly match the calculations done above, although the result of the expression `(TRACKS-DIRTRK)*CPMSPT/(BLKSIZ/128)-1` in the comment would in fact be 196.5, which seems to have been rounded up to 197. The value used in the code is correct, but the explanatory expression may be the reason why the OS reports the usable capacity of the JUKU floppy disk as 786 kB, because 196.5×4096 = 804,864 bytes, after which 804864/1024 = 786 kB. In reality, however, the JUKU floppy holds either 784 kB worth of files or 788 kB worth of logical blocks together with the directory block. The extra half logical block is accessible to the OS, so the reference on the title screen to 786 kB disks isn't outright wrong; but neither JUKU itself nor CP/M software can in general cope correctly with the 2048-byte phantom block, and at best it could be used to store secret messages.
 
-Kuna JUKU flopid ei ole andmete keerulise struktuuri tõttu loetavad tavapäraste CP/Mi andmetõmmiste töötlemise tööriistade jaoks, siis tasub panna tähele, et juba DEC Rainbow 100 on [ajalooliselt tunnustatud peavalu](https://en.wikipedia.org/wiki/Rainbow_100#Problems), sest selle paisktabel ei ühildunud teiste tootjate standarditega. JUKU kasutab/viitab Rainbow kettaformaati ilmselt pigem juhuslikel põhjustel või kuna selle kettalugeja ühendas kaks ühepoolset kettalugejat ning sobis seega teatud määral koodidoonoriks -- igatahes JUKU paisktabel tundub peale vaadates veel omal moel eksootiline ja on [samuti leitav lähtekoodist](https://github.com/infoaed/juku3000/blob/master/src/EKDOS30.ASM#L80-L93):
+Since JUKU floppies, because of their complex data structure, are not readable by the usual CP/M disk-image tools, it's worth noting that the DEC Rainbow 100 itself has been [historically a recognised headache](https://en.wikipedia.org/wiki/Rainbow_100#Problems), because its skew table did not align with the standards of other manufacturers. JUKU probably uses/refers to the Rainbow disk format for fairly accidental reasons, or because its disk reader combined two single-sided readers and was therefore to a degree suitable as a "code donor" — in any case the JUKU skew table looks exotic in its own way and is [likewise findable in the source code](https://github.com/infoaed/juku3000/blob/master/src/EKDOS30.ASM#L80-L93):
 
 ```
 ; *** Sector translate vectors, two 40 byte areas ***
@@ -53,29 +53,29 @@ TRANS1:	DB	1,2,3,4,9,10,11,12
 	DB	29,30,31,32,37,38,39,40	
 ```
 
-Kui lähemalt vaadata, siis on näha, et selline paisktabel ehk _skew table_ koosneb tegelikult neljastest plokkidest nagu `1,2,3,4` või `33,34,35,36` ja tabeli lihtsustatud väljendus oleks õigupoolest `1,3,5,7,9,2,4,6,8,10`. Selline oleks paisktabel, kui see määratleda lähtuvalt JUKU flopide 4x128 = 512-baidistest [füüsilistest sektoritest](https://cowlark.com/fluxengine/doc/disk-juku.html). See tähendab, et sektoreid iga üksiku raja kohta loetakse nii, et esmalt loetakse paarituarvulise järjekorranumbriga ja siis kõik paarisarvulise järjekorranumbriga 512-baidisteks ühendatud sektorid, millest kumbagi on raja kohta viis. Sellist järjest lugemise vältimist oli omal ajal väidetavalt vaja, et arvutid kettalt tulevaid andmeid [ikka töödelda jõuaks](https://www.autometer.de/unix4fun/z80pack/cpm2/ch6.htm#Section_6.6) ja puhvrid ei hakkaks üle ajama:
+On closer inspection, you can see that such a skew table actually consists of blocks of four like `1,2,3,4` or `33,34,35,36`, and the simplified expression of the table would actually be `1,3,5,7,9,2,4,6,8,10`. That is what the skew table would be if it were defined in terms of JUKU's 4×128 = 512-byte [physical sectors](https://cowlark.com/fluxengine/doc/disk-juku.html). In other words, the sectors of each individual track are read so that first all odd-numbered, and then all even-numbered, 512-byte combined sectors are read; there are five of each per track. Avoiding sequential reading like this was reportedly needed at the time so that computers could [keep up with processing the data coming off the disk](https://www.autometer.de/unix4fun/z80pack/cpm2/ch6.htm#Section_6.6) and buffers wouldn't overflow:
 
 > "Standard CP/M systems are shipped with a skew factor of 6, where six physical sectors are skipped between each logical read operation. This skew factor allows enough time between sectors for most programs to load their buffers without missing the next sector. In particular computer systems that use fast processors, memory, and disk subsystems, the skew factor might be changed to improve overall response."
 
-Pole teada, kas sellist aeglustamist oli JUKU flopiseadmete puhul reaalselt vaja, aga tänapäeva mõistes on ilmselt tegu tarbetu abinõuga ning seetõttu ei tee me kindlasti midagi halba, kui paisktabelit loetavuse mõttes lihtsustame. Küll aga ei piisa, kui söödame oma lihtsustatud või ka lihtsustamata paisktabeli [_cpmtools_'ile](https://www.mankier.com/5/diskdefs), sest kuigi ketta algus loetakse enam-vähem, siis esimestest failidest edasi läheb kõik juba parajaks segapudruks.
+It is not known whether this kind of slowing-down was actually needed for JUKU floppy drives, but in modern terms it is probably an unnecessary measure, and so we are certainly doing no harm by simplifying the skew table for the sake of readability. However, simply feeding our simplified — or non-simplified — skew table to [_cpmtools_](https://www.mankier.com/5/diskdefs) is not enough, because although the start of the disk is read roughly correctly, from the first files onwards everything turns into a proper mush.
 
-Kui seda valminud putru lähemalt vaadelda, selgub et JUKU kettaformaadil veel teine standardist hälbiv iseärasus, mis ei seostu üldse paisktabelitega ja muudab kettad tavalisi CP/Mi kettalid lugevatele tööriistadele arusaamatuks. Nimelt kirjutatakse JUKU ketta ühe poole rajad täis ja siis minnakse teise poole radu kirjutama uuesti algusest, st ketta teisest servast. [Tavapärane on kirjutada radu](https://www.mankier.com/5/libdskrc) kordamööda ühele ja teisele poolele või hakata rajanumbritega ühte kettaserva jõudes nendega teiselt poolelt tagasi tulema. Seega on JUKU flopidel tavapäraste ketaste suhtes segadus kahes mõttes, esiteks paisktabeli tõttu ja teiseks radade paigutuse tõttu kettal. Ette rutates võib ütelda, et algse hüpoteesi kohaselt kurja juureks oletatud paisktabel osutub radade segaduse lahendamise järel õigupoolest täiesti standardseks.
+If we look more closely at the resulting mush, it turns out that the JUKU disk format has another non-standard peculiarity that has nothing to do with skew tables and makes the disks unintelligible to tools that read ordinary CP/M disks. Namely: the tracks of one side of a JUKU disk are written out fully and then the other side is written starting from the beginning again, i.e. from the other edge of the disk. [The customary approach is to write tracks](https://www.mankier.com/5/libdskrc) alternately on one side and the other, or, when the track numbers reach one edge of the disk, to come back from the other side with them. So JUKU floppies are scrambled in two senses compared to ordinary disks — first because of the skew table, and second because of the layout of tracks on the disk. To jump ahead: after resolving the track-layout scramble, the skew table that was originally hypothesised as the root of the evil turns out to be perfectly standard.
 
-## Millega ja mispidi neid siis lugeda?
+## What and how do we actually read them with?
 
-Tegelikult [_cpmtools_](http://www.moria.de/~michael/cpmtools/) koos [_libdsk_'i](https://www.seasip.info/Unix/LibDsk/) kettaseadetega loeb JUKU diskid edukalt välja. Mõlemad on olemas kõigile viisakatele tänapäeva opsüsteemidele, aga peab veenduma, kas _cpmtools_'i seadetes ehk ülal viidatud `diskdef` failis saab viidata _libdsk_'i seadetes määratletud `.libdskrc` kirjetele. Sisuliselt on vaja teha kahte asja:
+In fact [_cpmtools_](http://www.moria.de/~michael/cpmtools/) together with [_libdsk_'s](https://www.seasip.info/Unix/LibDsk/) disk settings reads JUKU disks successfully. Both are available on every decent modern OS, but you have to check whether _cpmtools_'s settings — i.e. the `diskdef` file referenced above — can refer to entries defined in _libdsk_'s settings `.libdskrc`. Essentially, two things need to be done:
 
-1. Tuleb `.libdiskrc` failis määratleda kettatõmmis kui kahe lugemispeaga loetav, st parameeter `heads = 2` ja silindrite arvuks määrata ühe poole radade arv `cylinders = 80`. Kettapooltele kirjutatavate radade järjekorra kohta peab ütlema, et neid kirjutatakse ketta väljast sissepoole liikudes järjest ning kui üks pool saab täis, siis jätkatakse teise poolega uuesti väljast sissepoole ehk parameeter `sides = outout`. Kettatõmmise tüübi nimeks määrame JUKU ehk paneme pealkirjaks `[juku]`.
+1. In the `.libdiskrc` file, define the disk image as being read by two heads, i.e. the parameter `heads = 2`, and set the number of cylinders to the number of tracks on one side, `cylinders = 80`. As to the order in which the tracks are written on the disk's sides, you have to say that they are written starting from the outside and going inwards in order, and when one side is full, the other side is continued — again from the outside inwards — i.e. the parameter `sides = outout`. We set the name of the disk-image type to JUKU, i.e. we use the heading `[juku]`.
 
-2. Tuleb _cpmtools_'i `diskdefs` failis määratleda sobiv radade ja sektorite arv, määratleda eriotstarbelised rajad nagu süsteemile määratud kaks rada parameetriga `boottrk 2` ja failide asukohti kettal kirjeldav rada parameetriga `maxdir 128`. Ütlasi tuleb `diskdefs` failis osutada, et kasutataks _libdsk_'i geomeetriat kettapoolte lugemiseks ning seda teeb parameeter `libdsk:format juku`. Siin tuleb nüüd määratleda ka paisktabel ja seda on võimalik määratleda EKDOSi lähtekoodi viisil või lihtsustada nii, nagu ülal osutasin.
+2. In _cpmtools_'s `diskdefs` file, define the appropriate number of tracks and sectors, define the special-purpose tracks such as the two tracks reserved for the system with the parameter `boottrk 2`, and the track describing file locations on the disk with the parameter `maxdir 128`. The `diskdefs` file should also point to using _libdsk_'s geometry for reading the sides of the disk, which is done by the parameter `libdsk:format juku`. At this point we also have to define the skew table; it can be defined in the style of the EKDOS source code, or simplified as indicated above.
 
-Kui alustuseks vaadata JUKU enda utiliite, siis need näitavad ketta eri parameetreid samuti üpris erinevalt:
+If we start by looking at JUKU's own utilities, they show the various disk parameters fairly differently:
 
 STAT             |  KULT              |  DOCTOR
 :-------------------------:|:-------------------------:|:-------------------------:
-![STAT näitab 40 sektorit raja kohta](/images/disk.png) | ![KULT näitab ka paisktabelit](/images/disk4.png) | ![Software Soulutions DISK EDITOR & DIAGNOSTICS annab kõige põhjalikuma ülevaate (aga ei erista 32 baidiseid plokke)](/images/disk2.png)
+![STAT shows 40 sectors per track](/images/disk.png) | ![KULT also shows the skew table](/images/disk4.png) | ![Software Solutions DISK EDITOR & DIAGNOSTICS gives the most thorough overview (but does not separate the 32-byte blocks)](/images/disk2.png)
 
-JUKU CP/Mil põhinevale 128-baidisele sektorisuurusele truuks jäädes peaksime määrama `.libdiskrc` failis parameetrid ilmselt nii:
+Staying faithful to JUKU's CP/M-based 128-byte sector size, we should define the parameters in `.libdiskrc` more or less like this:
 
 ```
 [juku-origin]
@@ -88,7 +88,7 @@ sectors = 40
 datarate = DD
 ```
 
-Samamoodi austades algset paisktabelit peaks olema `diskdefs` kirje (küll tuleb tabeli väärtused muuta nullist algavaks):
+Similarly respecting the original skew table, the `diskdefs` entry should be (though the table values must be changed to start from zero):
 
 ```
 # JUKU E5101 original (DEC Rainbow 100 feat DSDD)
@@ -105,7 +105,7 @@ diskdef juku-origin
 end
 ```
 
-Kui lihtsustame aga paisktabeli ja ühendame CP/Mi 128-baidised sektorid neljakaupa üheks 512-baidiseks füüsiliseks sektoriks, siis peaks sobima vastavalt:
+If we instead simplify the skew table and group CP/M's 128-byte sectors four at a time into a single 512-byte physical sector, then accordingly:
 
 ```
 [juku]
@@ -118,7 +118,7 @@ sectors = 10
 datarate = DD
 ```
 
-Ja _cpmtools_'i `diskdefs` lühendatud paisktabeliga on lõpuks ketta poolte lugemise segaduse eemaldamise järel täiesti tavaline paiskfaktor väärtusega 2 ehk `skew 2`:
+And in _cpmtools_'s `diskdefs` with the shortened skew table — after eliminating the disk-sides scramble — what we end up with is a perfectly ordinary skew factor of 2, i.e. `skew 2`:
 
 ```
 # JUKU E5101 \w optimized skew (DEC Rainbow 100 feat DSDD)
@@ -136,17 +136,17 @@ diskdef juku
 end
 ```
 
-Kuna _cpmtools_'i kõik versioonid kõigi _libdsk_'i versioonidega praktikas ei ühildu, siis pole välistatud ka _libdsk_'i seadistustes määratletud geomeetria ignoreerimine, aga sel juhul võiks saada näiteks kirjeldada kõik sektorid ja plokid ühel rajal üheainsa suure paisktabelina. Selline häkk teeks tabeli umbes 160x10x4 ≈ 6 kB pikkuseks, mis ei ole küll tänapeäva mõistes päris maailmalõpp, aga _cpmtools_ ei pruugi vaikimisi nii pikka tabelit seedida. _Libdsk_'i seadistamisel võiks doonoriks sobida ka mõne _acorn_ flopi geomeetria, mis on üks väheseid, milles `outout` lugemisviis kasutusel olla olnud (vt ["used by some Acorn formats [and JUKU]"](https://www.mankier.com/5/libdskrc#Parameters)). Lõppeks võib lihtsaim viis Gordioni sõlme raiumiseks olla, kui teha elementaarsed muudatused otse _cpmtools_'i lähtekoodi ja kompileerida see ise.
+Since not all versions of _cpmtools_ are in practice compatible with all versions of _libdsk_, it is not excluded that the geometry defined in _libdsk_'s settings is ignored — in which case, for example, all sectors and blocks on a track could be described as a single big skew table. Such a hack would make the table roughly 160×10×4 ≈ 6 kB long, which by modern standards isn't quite the end of the world, but _cpmtools_ may not digest a table that long by default. When setting up _libdsk_, the geometry of some _acorn_ floppy could also serve as a donor, since this is one of the few in which the `outout` reading style has been used (see ["used by some Acorn formats [and JUKU]"](https://www.mankier.com/5/libdskrc#Parameters)). Ultimately the simplest way to cut the Gordian knot may be to make elementary changes directly to _cpmtools_'s source code and compile it yourself.
 
-## Lõppseis ja töö viljad
+## The final state and the fruits of our labour
 
-Lõpptulemus näeb _cpmtools_'i `fsed.cpm -f juku-origin ORIG.CPM` ekraanil välja nii:
+The end result looks like this in _cpmtools_'s `fsed.cpm -f juku-origin ORIG.CPM` screen:
 
-Info (I)             |  Datamap (M)              |  Kataloogikirje (0x5000)
+Info (I)             |  Datamap (M)              |  Directory entry (0x5000)
 :-------------------------:|:-------------------------:|:-------------------------:
-![JUKU E5101 algupärase laotuse infotabel](/images/info-origin.png) | ![Algupärase laotuse andmekaart](/images/datamap-origin.png) | ![Ketta sisu peaks aga algupärase/optimeeritud versiooni puhul juhul sama olema](/images/data.png)
+![JUKU E5101 original-layout info table](/images/info-origin.png) | ![Original-layout data map](/images/datamap-origin.png) | ![The disk contents should however be the same in both the original and optimised versions](/images/data.png)
 
-Ühtlasi peaks töötama kõik [_cpmtools_'i käsud](http://www.moria.de/~michael/cpmtools/), millega brausida ketaste sisu ning teha failioperatsioone kopeerimisest kustutamiseni:
+All [_cpmtools_ commands](http://www.moria.de/~michael/cpmtools/) should also work — for browsing disk contents and for file operations from copying to deleting:
 
 ```
 cpmls -f juku DISK.CPM
@@ -155,17 +155,17 @@ cpmcp -f juku GAMES.CPM 0:*.* jukugames
 cpmcp -f juku GAMESX.CPM jukugames/INDY.* 0:
 ```
 
-Kui määrata `juku` keskkonnamuutujas `CPMTOOLSFMT` vaikimisi formaadiks, siis võib `-f juku` ka ära jätta:
+If you set `juku` as the default format in the environment variable `CPMTOOLSFMT`, you can omit `-f juku`:
 
 ```
 CPMTOOLSFMT="juku"
 export CPMTOOLSFMT
 ```
 
-Toetatud kettatüüpide ja -vormingute nimekirju _libdsk_'i poolel näitavad `dskutil -types` ja `dskutil -formats`, _cpmtools_ lubatud formaatide nimekirja ei paista väljastavat ja nendega tuleb tutvuda `diskdefs` seadistusfaili tasemel. Õigupoolest on JUKU ketaste lugemiseks täiendavate _libdsk_'i vahenditeta vaja _cpmtools_'i lähtekoodi täiendada vaid ühe reaga kahes funktsioons, mis juhendaks neid otsima radu kettatõmmisel õigest kohast ja sellise täiendusega [CpmtoolsGUI](http://star.gmobb.jp/koji/cgi/wiki.cgi?page=CpmtoolsGUI) eksperimentaalse JUKU versiooni leiab [siit](http://infoaed.ee/juku/CpmtoolsGUI_JUKU.zip).
+The lists of disk types and formats supported on _libdsk_'s side are shown by `dskutil -types` and `dskutil -formats`; _cpmtools_ does not appear to expose its list of allowed formats and you have to get to know them at the `diskdefs` configuration-file level. Strictly speaking, to read JUKU disks without additional _libdsk_ tools, _cpmtools_'s source code needs only a single extra line in two functions — to instruct them to look for tracks at the right place in the disk image — and an experimental JUKU version of [CpmtoolsGUI](http://star.gmobb.jp/koji/cgi/wiki.cgi?page=CpmtoolsGUI) so amended can be found [here](http://infoaed.ee/juku/CpmtoolsGUI_JUKU.zip).
 
-Alates [2025. aasta juulist](https://github.com/davidgiven/fluxengine/pull/796) suudab aga lisapingutusteta töödelda JUKU kettaid ka [Fluxengine'i arendusversioon](https://github.com/davidgiven/fluxengine/releases/tag/dev).
+Starting from [July 2025](https://github.com/davidgiven/fluxengine/pull/796), JUKU disks can also be processed without additional effort by the [Fluxengine development build](https://github.com/davidgiven/fluxengine/releases/tag/dev).
 
-On küll mõnevõrra tüütu kaevuda ajalooliste kettaformaatide iseärasustesse, kuid mõningase pusimise ja loomkatsete tulemusel saab ka maailma kõige unikaalsema CP/Mi kettaformaadi loetud. JUKU tunnustuseks võib ütelda, et tõenäoliselt pole kunagi eksisteerinud ühtegi teist arvutisüsteemi, mis oleks ilma pusserdamiseta JUKU kettaid suutnud lugeda -- seega kaksteist punkti ja ugrikrüpto eriauhind teadurile, kes selle vormingu välja mõtles!
+It is somewhat tedious to dig into the peculiarities of historical disk formats, but with a bit of fiddling and trial-and-error even the world's most unique CP/M disk format can be read. To JUKU's credit, it can be said that probably no other computer system has ever existed that could read JUKU disks without tinkering — so twelve points and the Finno-Ugric crypto special prize to the researcher who came up with this format!
 
-P. S. Füüsilistest ketastest tõmmiste tegemine on ka huvitav, aga eraldi kirjatükki vääriv teema.
+P. S. Making disk images from physical disks is also an interesting topic, but worthy of its own write-up.

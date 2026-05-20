@@ -1,5 +1,5 @@
 site_name: juku3000
-site_description: Kooliarvuti JUKU igavene digitaalne elu
+site_description: The eternal digital life of the school computer JUKU
 site_url: https://j3k.borjch.com/
 repo_name: infoaed/juku3000
 repo_url: https://github.com/infoaed/juku3000
@@ -16,26 +16,26 @@ theme:
     name: material
     logo: images/juku3000_small.svg
     favicon: images/favicon.svg
-    language: et
+    language: en
     custom_dir: docs/overrides
     palette:
       - media: "(prefers-color-scheme)"
         primary: deep-purple
         toggle:
           icon: material/brightness-auto    
-          name: "Automaatne heledus"
+          name: "Automatic brightness"
       - scheme: 'default'
         primary: deep-purple
         media: '(prefers-color-scheme: light)'
         toggle:
           icon: 'material/lightbulb'
-          name: "Tekst tumedal tasutal"
+          name: "Text on a dark background"
       - scheme: 'slate'
         primary: deep-purple
         media: '(prefers-color-scheme: dark)'
         toggle:
           icon: 'material/lightbulb-outline'
-          name: 'Tekst heledal taustal'
+          name: 'Text on a light background'
     features:
         - navigation.sections
         - header.autohide
@@ -57,13 +57,13 @@ plugins:
   - social:
 
 nav:
-    - Tere, Juhan!: index.md
-    - JUKU elutsükkel: ajajoon.md
-    - EKDOSi kasutamine: juku-käsud.md
-    - MAME käivitamine: mame-käivitamine.md
-    - Videote salvestamine: videod.md
-    - Ketaste lugemine: kettad.md
-    - Mängude ketas 2024: mängude-ketas-2024.md
-    - Mängude ketas 2025: porditud-mängud-2025.md
-    - Tarkvara kataloog: tarkvara-kataloog.md
-    - '👾 Proovi JUKUt veebis! 👾': 'https://infoaed.ee/juku'
+    - Hello, Juhan!: index.md
+    - JUKU life cycle: ajajoon.md
+    - Using EKDOS: juku-käsud.md
+    - Running MAME: mame-käivitamine.md
+    - Recording videos: videod.md
+    - Reading disks: kettad.md
+    - Games disc 2024: mängude-ketas-2024.md
+    - Games disc 2025: porditud-mängud-2025.md
+    - Software catalog: tarkvara-kataloog.md
+    - '👾 Try JUKU in your browser! 👾': 'https://infoaed.ee/juku'

@@ -39,9 +39,9 @@
 
 ``MODX    .COM`` - Driver for mode 80 x 25 ( NOTE 1 )  
 ``LF      .COM`` - Font loader for MODX  
-``ASCII   .   ­`` - font file, ASCII Character Set  
-``EST     .   ­`` - font file, Estonian Character Set  
-``RUS     .   ­`` - font file, Cyrillic Character Set  
+``ASCII   .   ­`` - font file, ASCII Character Set  
+``EST     .   ­`` - font file, Estonian Character Set  
+``RUS     .   ­`` - font file, Cyrillic Character Set  
 
 ``MDUMP   .COM`` - Memory Dump  
 ``MED     .COM`` - Memory Editor  
@@ -52,7 +52,7 @@
 ``KULT    .HLP`` - Instructions to KULT  
 
 ``RESIDENT.DOC`` - Instructions to writing resident  
-``­            ­``   programs  
+``­            ­``   programs  
 ``JLOAD   .LDR`` - System part for resident programs  
 ``LINK    .COM`` - MP/M Link program vers 1.3  
 
@@ -61,7 +61,7 @@
 ``PLAYER  .ERL`` - Driver for sound generation  
 
 ``DEMO    .COM`` - Audio-Video-Text program  
-``­            ­``   presentation  
+``­            ­``   presentation  
 ``DEMO    .HLP`` - DEMO help file  
 ``DEMO    .DOC`` - Instructions to DEMO  
 ``DEMOS   .COM`` - A-V-T program preparation  
@@ -94,26 +94,27 @@
 
 ```
 ================================================
-NOTE 1 ! : Ekraanireziim 80 x 25 
+NOTE 1 ! : Screen mode 80 x 25
 ================================================
-  1. A>MODX  -  laadida residentne  draiver, mis
-        omakorda käivitab automaatselt fondilaa-
-        duri LF. Failid ASCII ja  EST sisaldavad
-        5 x 7  tähegeneraatori   koodivahemikule
-        20H...7FH (laadimisel vastata küsimusele
-        "Estonian/Russian  table  ?"  E-ga) ning
-        fail RUS vahemikule C0H...FFH (vasta R).
-  2. Käivitada 80x25  reziimi  vajav   programm,
-     näiteks SED80 , origin.  WS või Multiplan ,
-     CATCHUM , LADDER vms.
-  3. A>LF    - võimaldab laadida uut  fonti  või
-        suurendada vaba mälu mahtu  (f.-n RESET)
-        laetud fondi väljaviskamise  teel -  sel
-        juhul kasutatakse püsimälus olevat 6 x 9
-        tähegeneraatorit.
-  4.Tagasi reziimidesse 40x24 , 53x24  ja  64x20
-    saab ainult läbi totaalse RESET'i (CTRL+ESC+
-    SHIFT).
+  1. A>MODX  -  load the resident driver, which in
+        turn automatically launches the font load-
+        er LF. The files ASCII and EST contain the
+        5 x 7 character generator for the code
+        range 20H...7FH (when loading, answer "E"
+        to the question "Estonian/Russian table?")
+        and the file RUS for the range C0H...FFH
+        (answer R).
+  2. Launch a program that needs the 80x25 mode,
+     e.g. SED80, the original WS or Multiplan,
+     CATCHUM, LADDER, etc.
+  3. A>LF    - allows loading a new font, or
+        increasing free memory (the f.-n RESET)
+        by discarding the loaded font — in that
+        case the 6 x 9 character generator in
+        ROM is used.
+  4. Returning to the 40x24, 53x24 and 64x20 modes
+     is only possible through a total RESET
+     (CTRL+ESC+SHIFT).
 ================================================
 ```
 
@@ -121,16 +122,17 @@ NOTE 1 ! : Ekraanireziim 80 x 25
 ================================================
 NOTE 2!
 ================================================
-    Kes veel ei tea , siis nüüd saab  teada , et
-   ekraanireziimi saab peale programmi MODE  va-
-   hetada ka opsüsteemi tasemel ,  vajutades  A>
-   järel järjestikku ESC , M , n , RETURN  , kus
-        n = 0 viib reziimi 40 x 24 ,
-        n = 1 - 53 x 24 ja
-        n = 2 - 64 x 20 .
+    For those who don't know yet: now you know
+   that the screen mode can also be changed,
+   in addition to the MODE program, at the OS
+   level — by pressing, after the A> prompt,
+   ESC, M, n, RETURN consecutively, where
+        n = 0 switches to the 40 x 24 mode,
+        n = 1 - 53 x 24 and
+        n = 2 - 64 x 20.
 ================================================
 ```
 
-## Vaata ka
+## See also
 
-* [Ketta rekonstrueeritud tõmmis](tarkvara-kataloog.md/#j3kutil4) (J3K 2025)
+* [The reconstructed disc image](tarkvara-kataloog.md/#j3kutil4) (J3K 2025)

@@ -1,4 +1,4 @@
-# Pascal/MT+ lisateekide pakett arvutile "JUKU"
+# Pascal/MT+ extension library package for the "JUKU" computer
 
 ```
 
@@ -7,45 +7,45 @@
 
 
 
+       
+
+               PASCAL/MT+ EXTENSION LIBRARY PACKAGE
+
+                      FOR THE "JUKU" COMPUTER.
 
 
-               PASCAL/MT+ LISATEEKIDE PAKETT
 
-                      ARVUTILE "JUKU".
-
-
-
-                                         Autor: I.Jentson
+                                         Author: I.Jentson
 
                                                 Nõo KK AK
 
 ```
 
-## Eessõna
+## Preface
 
-Paketi kasutamine eeldab algteadmisi keelest Pascal ja oskust
-töötada Pascal/MT+ translaatoriga.  Pascali algteadmiste
-omandamiseks võib kasutada näiteks õppevahendit[^2],
-aga sobib ka ükskõik milline Pascalit käsitlev raamat. Arvutil
-"Juku" töötava Pascal/MT+ kasutamise kohta  on  vähesel 
-määral informatsiooni teoses[^1], täpsem ülevaade kasutamisest ja
-Pascal/MT+ erinevustest standartsest Pascalist antakse teoses[^3].
+Using the package assumes basic knowledge of the Pascal language and
+the ability to work with the Pascal/MT+ translator. To acquire basic
+knowledge of Pascal, you can use, for instance, the textbook[^2], but
+any book covering Pascal is also suitable. Some information on using
+Pascal/MT+ on the "Juku" computer is given in[^1]; a more detailed
+overview of its use and of Pascal/MT+'s differences from standard
+Pascal is given in[^3].
 
-Paketi  tegemisel on püütud tagada funktsiooninimetuste 
-kokkulangevus  Turbo Pascali sarnaste funktsioonidega.
-
-
-
-## 1. Ülevaade teekidest
+When designing the package, an effort has been made to ensure that
+the function names match the analogous functions in Turbo Pascal.
 
 
-Pascal/MT+ lisateegid sisaldavad protseduure ja  funktsioone
-graafiliseks  tööks arvuti "JUKU"  kuvari  ekraanil, 
-samuti teksti kuvareziimi valimiseks ning ketaste,  taimeri, 
-printeri, "hiirega" töötamiseks jm.
 
-Kõigi nende protseduuride ja funktsioonide kasutamiseks 
-veendu järgmiste failide olemasolus:
+## 1. Overview of the libraries
+
+
+The Pascal/MT+ extension libraries contain procedures and functions
+for graphical work on the "JUKU" computer's display, as well as for
+choosing the text-mode display, and for working with disks, the
+timer, the printer, the "mouse", and so on.
+
+To use all of these procedures and functions, make sure the
+following files are present:
 
      Graph.H        Graph.ERL
      Screen.H       Screen.ERL
@@ -53,37 +53,36 @@ veendu järgmiste failide olemasolus:
      Sprite.H1      Sprite.H2      Sprite.ERL
      Disk.H         Disk.ERL
 
-Failis `SPRITE.H1` on tüübikirjeldused  spraidiprotseduuridele:
+The file `SPRITE.H1` contains type declarations for the sprite procedures:
 
 ```
 Type _pointer = ^byte;         
-          pic = record             Spraiti iseloomustavad:
-                    x : integer;   asukoha x - koordinaat
-                    y : integer;           y - koordinaat
-                 xdim : byte;      x - mõõde ( pixelid/8+1 )
-                 ydim : byte;      y - mõõde
-                place : _pointer;  asukoht mälus
-                shift : _pointer   nihe (ära puutu!)
+          pic = record             A sprite is characterised by:
+                    x : integer;   the x-coordinate of its location
+                    y : integer;           y-coordinate
+                 xdim : byte;      x-dimension ( pixels/8+1 )
+                 ydim : byte;      y-dimension
+                place : _pointer;  location in memory
+                shift : _pointer   offset (don't touch!)
                end;
         bfail = file of byte;
 ```
 
-Ülejäänud `.H` laiendiga failides hoitakse paketis olevate
-funktsioonide ja protseduuride pascalkeelseid kirjeldusi, 
-failides laiendiga `.ERL` hoitakse nende linkimiseks kõlblikke 
-mooduleid.
+The other files with the `.H` extension hold Pascal-language declarations of
+the functions and procedures provided by the package; files with the `.ERL`
+extension hold modules ready for linking against them.
 
 
-Järgmised protseduurid ja funktsioonid on teekides:
+The following procedures and functions are in the libraries:
 
-     Graafikateek:                           ( Graph )
+     Graphics library:                       ( Graph )
 
      BOX                 CIRCLE              INVSCR
      LINE                LINETO              LINEREL             
      MOVETO              MOVEREL             PUTPIXEL            
      SETHGR              SETTEXT
 
-     Kuva vormingu teek:                     ( Screen )
+     Display formatting library:             ( Screen )
 
      CLREOLN             CLREOSCR            CLRSCR
      CLOSEWND            CURSOFF             CURSON
@@ -94,127 +93,125 @@ Järgmised protseduurid ja funktsioonid on teekides:
      SCROLOFF            SCROLON             UP
      WHEREXY
 
-     Varia:                                  ( Utilit )
+     Miscellaneous:                          ( Utilit )
 
      INITPR              MOUSE               PRCHR
      RANDOM              RSTTIMER            SOUND
      TIMER               VOLUME
 
-     Spraiditeek:                            ( Sprite )
+     Sprite library:                         ( Sprite )
 
      GETMEM              GETPIC              LOADPIC
      MOVEPIC             PUTPIC
 
-     Kettateek:                              ( Disk )
+     Disk library:                           ( Disk )
 
      READDISK            SELECTDISK          SETDMA
      SETSECTOR           SETTRACK            WRITEDISK
 
 
-## 2. Teekide kasutamine
+## 2. Using the libraries
 
 
-### 2.1  Täiendused kasutajaprogrammis
+### 2.1  Additions to the user program
 
-Oma  programmi  tuleb  lisada  lisateegi  protseduuride 
-jaoks tüübi- ja protseduurikirjeldused.  Selleks kasutatakse 
-kompileerimisreziimi võtit `$I`, mille abil lisatakse programmile
-`.H` laiendiga failide pascalkeelsed tekstid.
+To your own program, you need to add the type and procedure
+declarations for the extension-library routines. This is done with
+the compile-mode switch `$I`, which inserts the Pascal text from
+files with the `.H` extension into the program.
 
-NÄIDE:
+EXAMPLE:
 
 ```
-  program näide;
-  (*$I a:sprite.h1 *)          lisatakse tüübikirjeldused
+  program example;
+  (*$I a:sprite.h1 *)          type declarations are added
 
-  ......                       kasutajaprogrammi märgendite,
-  ......                       konstantide, tüüpide ja
-  ......                       muutujate kirjeldamine
+  ......                       declarations of the user
+  ......                       program's labels, constants,
+  ......                       types and variables
 
-  (*$I a:sprite.h2 *)          lisatakse protseduuride kir-
-  (*$I a:graph.h *)            jeldused
+  (*$I a:sprite.h2 *)          procedure declarations are
+  (*$I a:graph.h *)            added
 
-  ......                       kasutaja protseduuride ja   
-  ......                       funktsioonide kirjeldused
+  ......                       user procedure and function
+  ......                       declarations
 
   begin
-  ......                       põhiprogramm
+  ......                       main program
   ......
   end.
 ```
 
 
-### 2.2 Linkimine
+### 2.2 Linking
 
-Tuleb  lisada  vastav `.ERL` laiendiga fail  linkimiskäsu 
-parameetrite loetelusse:
+You must add the corresponding `.ERL` file to the list of parameters
+in the link command:
 
 ```
-LINKMT NÄIDE,SPRITE,GRAPH,PASLIB/S
+LINKMT EXAMPLE,SPRITE,GRAPH,PASLIB/S
 ```
 
-## 3. Protseduurid ja funktsioonid
+## 3. Procedures and functions
 
-Iga funktsiooni ja protseduuri kohta on esitatud informatsioon
-järgmisel kujul:
-
-
-    FUNKTSIOONI_NIMI
-
-     Kirjeldus:  Pascalkeelne fn-i kirjeldus.
-
-    Kasutamine:  Fn-i väljakutsumise kuju. Parameetrite tüü-
-                 bid on esitatud kirjelduses, lisaks sellele 
-                 on kasutatud järgmist kodeeringut parameet-
-                 ri esitähe järgi:
-                  n - täisarvuline avaldis;
-                  c - märgitüüpi avaldis;
-                  m - täisarvuline muutuja;
-                  l - loogiline muutuja;
-                  b - baitidest koosneva faili muutuja;
-                  p - spraiditüüpi ( pic ) muutuja.
-
-       Tegevus:  Fn-i tegevuse ja parameetrite selgitus.
-
-        Märkus:  Kui fn-l on mingisuguseid iseärasusi,  siis 
-                 juhitakse sellele tähelepanu. Samuti viida-
-                 takse vajaduse korral teistele funktsiooni-
-                 dele.
+For every function and procedure, information is presented in the
+following form:
 
 
+    FUNCTION_NAME
+
+   Description: Pascal-language description of the function.
+
+         Usage: Form of the function call. Parameter types
+                are given in the description; in addition,
+                the following coding by the first letter of
+                the parameter is used:
+                  n - integer expression;
+                  c - character expression;
+                  m - integer variable;
+                  l - boolean variable;
+                  b - variable of a file of bytes;
+                  p - sprite-type ( pic ) variable.
+
+        Action: Explanation of the function's action and its
+                parameters.
+
+          Note: If the function has any peculiarities, attention
+                is drawn to them. References to other functions
+                are also given where appropriate.
 
 
-### 3.1 Graafikateek (`GRAPH`)
+
+
+### 3.1 Graphics library (`GRAPH`)
 
 #### `SETHGR`
 
-     Kirjeldus:  Procedure SetHgr;
+   Description: Procedure SetHgr;
 
-    Kasutamine:  SetHgr;
+         Usage: SetHgr;
 
-       Tegevus:  Graafikareziimi valimine.
+        Action: Selects graphics mode.
 
-        Märkus:  Kõik protseduurid, mis kasutavad monitori-
-                 funktsioone, ei tööta selles reziimis.
+          Note: All procedures that use monitor
+                functions do not work in this mode.
 
-                 Vt. ka SetText.
+                See also SetText.
 
                  
 #### `SETTEXT`
 
-     Kirjeldus: Procedure SetText;
+   Description: Procedure SetText;
 
-    Kasutamine: SetText;
+         Usage: SetText;
 
-       Tegevus: Tekstireziimi valimine. Selles reziimis saab 
-                kasutada monitorifunktsioone.
+        Action: Selects text mode. In this mode, the
+                monitor functions can be used.
 
-        Märkus: Graafikaprotseduurid  ei tööta selles rezii-
-                mis.
+          Note: The graphics procedures do not work in this
+                mode.
 
-                Vt. ka SetHgr.
-
-
+                See also SetHgr.
 
 
 
@@ -224,57 +221,57 @@ järgmisel kujul:
 
 #### `PUTPIXEL`
 
-     Kirjeldus: Procedure PutPixel( X,Y,Mood:Integer );
+   Description: Procedure PutPixel( X,Y,Mood:Integer );
 
-    Kasutamine: PutPixel(nx,ny,nm);
+         Usage: PutPixel(nx,ny,nm);
                 
-       Tegevus: Ühe punkti kujutamine  ekraanil. Punkt kuju
-                tatakse ekraanile vastavalt koordinaatidele
-                X ja Y.  MOOD  võib olla  0 või 1.  Ekraanil 
-                juba  olevale  punktile  uue  pealepanemisel  
-                moodiga 1 korral punkt kaob,  0 korral  jääb 
-                alles. X-koordinaat võib omada väärtusi 0-st 
-                kuni  319-ni  ja y-koordinaat väärtusi  0-st 
-                kuni 239-ni. Ekraani piiridest üles- või al-
-                lapoole jäävate koordinaatide korral tegevus  
-                puudub,  vasakule või paremale jäävate koor-
-                dinaatide  korral kujutatakse punkt  ekraani 
-                vastasservale. Väärtused X ja Y säilitatakse 
-                graafilise kursori väärtustena.
+        Action: Draws one point on the screen. The point is
+                drawn on the screen according to the
+                coordinates X and Y. MOOD can be 0 or 1. When
+                a new point is placed on top of an existing
+                one, with mode 1 the point disappears, with
+                mode 0 it stays. The X-coordinate may take
+                values from 0 to 319, and the Y-coordinate
+                values from 0 to 239. With coordinates above
+                or below the screen, nothing happens; with
+                coordinates to the left or right, the point
+                is drawn on the opposite edge of the screen.
+                The values X and Y are kept as the graphics
+                cursor's values.
 
-        Märkus: Töötab graafikareziimis ja ekraanireziimides
-                0 ja 1 ( vt. SetHgr ja Screen ).
+          Note: Works in graphics mode and screen modes
+                0 and 1 (see SetHgr and Screen).
 
 
 
 #### `LINE`
 
-     Kirjeldus: Procedure Line( X1,Y1,X2,Y2,Mood:Integer );
+   Description: Procedure Line( X1,Y1,X2,Y2,Mood:Integer );
 
-    Kasutamine: Line(nx1,ny1,nx2,ny2,nm);
+         Usage: Line(nx1,ny1,nx2,ny2,nm);
 
-       Tegevus: Joone kujutamine  ekraanil. Joon kujutatakse
-                alguspunktiga  X1,Y1 ja lõpp-punktiga X2,Y2.
-                Parameetri Mood tähendust on seletatud prot-
-                seduuri PutPixel juures. 
+        Action: Draws a line on the screen. The line is drawn
+                with start point X1,Y1 and end point X2,Y2.
+                The meaning of the Mood parameter is
+                explained for the PutPixel procedure.
 
-        Märkus: Töötab graafikareziimis ja ekraanireziimides
-                0 ja 1 ( vt. SetHgr ja Screen ).
+          Note: Works in graphics mode and screen modes
+                0 and 1 (see SetHgr and Screen).
 
 #### `CIRCLE`
 
-     Kirjeldus: Procedure Circle( X,Y,R,Mood:Integer );
+   Description: Procedure Circle( X,Y,R,Mood:Integer );
 
-    Kasutamine: Circle(nx,ny,nr,nm);
+         Usage: Circle(nx,ny,nr,nm);
 
-       Tegevus: Ringi kujutamine ekraanil.  Ring kujutatakse
-                ekraanile keskpunktiga X, Y ja raadiusega R. 
-                Parameetri Mood tähendust on seletatud prot-
-                seduuri PutPixel juures. 
+        Action: Draws a circle on the screen. The circle is
+                drawn on the screen with centre X, Y and
+                radius R.
+                The meaning of the Mood parameter is
+                explained for the PutPixel procedure.
 
-        Märkus: Töötab graafikareziimis ja ekraanireziimides
-                0 ja 1 ( vt. SetHgr ja Screen ).
-
+          Note: Works in graphics mode and screen modes
+                0 and 1 (see SetHgr and Screen).
 
 
 
@@ -285,399 +282,397 @@ järgmisel kujul:
 
 #### `BOX`
 
-     Kirjeldus: Procedure Box( X1,Y1,X2,Y2,Mood:Integer );
+   Description: Procedure Box( X1,Y1,X2,Y2,Mood:Integer );
 
-    Kasutamine: Box(nx1,ny1,nx2,ny2,nm);
+         Usage: Box(nx1,ny1,nx2,ny2,nm);
 
-       Tegevus: Ristküliku kujutamine  ekraanil. Ristkülikut
-                kujutatakse ekraanil nii, et punktid koordi-
-                naatidega X1, Y1 ja  X2, Y2 tähistavad rist-
-                küliku  vastastikku  diagonaalis  asetsevaid
-                nurki.
-                Parameetri Mood tähendust on seletatud prot-
-                seduuri PutPixel juures. 
+        Action: Draws a rectangle on the screen. The
+                rectangle is drawn so that the points with
+                coordinates X1, Y1 and X2, Y2 mark the
+                opposite corners of the rectangle's diagonal.
+                The meaning of the Mood parameter is
+                explained for the PutPixel procedure.
 
-        Märkus: Töötab graafikareziimis ja ekraanireziimides
-                0 ja 1 ( vt. SetHgr ja Screen ).
+          Note: Works in graphics mode and screen modes
+                0 and 1 (see SetHgr and Screen).
 
 
 
 #### `LINETO`
 
-     Kirjeldus: Procedure LineTo( X,Y,Mood:Integer );
+   Description: Procedure LineTo( X,Y,Mood:Integer );
 
-    Kasutamine: LineTo(nx,ny,nm);
+         Usage: LineTo(nx,ny,nm);
 
-       Tegevus: Joone kujutamine ekraanil.  Joon kujutatakse
-                ekraanile alguspunktiga, mille  määrab graa-
-                filine kursor, ja lõpp-punktiga X, Y.
-                Parameetri Mood tähendust on seletatud prot-
-                seduuri PutPixel juures. 
+        Action: Draws a line on the screen. The line is drawn
+                with a start point determined by the graphics
+                cursor and end point X, Y.
+                The meaning of the Mood parameter is
+                explained for the PutPixel procedure.
 
-        Märkus: Töötab graafikareziimis ja ekraanireziimides
-                0 ja 1 ( vt. SetHgr ja Screen ).
+          Note: Works in graphics mode and screen modes
+                0 and 1 (see SetHgr and Screen).
 
-                Vt. ka MoveTo, LineRel, MoveRel.
+                See also MoveTo, LineRel, MoveRel.
 
 
 
 
 #### `MOVETO`
 
-     Kirjeldus: Procedure MoveTo( X,Y:Integer );
+   Description: Procedure MoveTo( X,Y:Integer );
 
-    Kasutamine: MoveTo(nx,ny);
+         Usage: MoveTo(nx,ny);
 
-       Tegevus: Graafikakursori koordinaadid saavad  väärtu-
-                seks X, Y.
+        Action: The graphics cursor's coordinates take the
+                values X, Y.
 
-                Vt. ka LineTo, LineRel, MoveRel.
+                See also LineTo, LineRel, MoveRel.
 
 
 #### `LINEREL`
 
-     Kirjeldus: Procedure LineRel( DX,DY,Mood:Integer );
+   Description: Procedure LineRel( DX,DY,Mood:Integer );
 
-    Kasutamine: LineRel(ndx,ndy,nm);
+         Usage: LineRel(ndx,ndy,nm);
 
-       Tegevus: Joone kujutamine  ekraanil. Joon kujutatakse
-                ekraanile  alguspunktiga, mille määrab graa-
-                filine kursor, ja lõpp-punktiga, mille koor-
-                dinaadid saadakse  alguspunkti koordinaatide
-                ja parameetrite DX ja DY vastaval liitmisel.
-                Parameetri Mood tähendust on seletatud prot-
-                seduuri PutPixel juures. 
+        Action: Draws a line on the screen. The line is drawn
+                with a start point determined by the graphics
+                cursor, and an end point whose coordinates
+                are obtained by adding DX and DY to the start
+                point's coordinates.
+                The meaning of the Mood parameter is
+                explained for the PutPixel procedure.
 
-        Märkus: Töötab graafikareziimis ja ekraanireziimides
-                0 ja 1 ( vt. SetHgr ja Screen ).
+          Note: Works in graphics mode and screen modes
+                0 and 1 (see SetHgr and Screen).
 
-                Vt. ka LineTo, MoveTo, MoveRel.
+                See also LineTo, MoveTo, MoveRel.
 
 
 #### `MOVEREL`
 
-     Kirjeldus: Procedure MoveRel( DX,DY:Integer );
+   Description: Procedure MoveRel( DX,DY:Integer );
 
-    Kasutamine: MoveRel(ndx,ndy);
+         Usage: MoveRel(ndx,ndy);
 
-       Tegevus: Graafikakursori  koordinaatide uuteks  väär-
-                tusteks  saavad vanad väärtused liita vasta-
-                valt DX ja DY.
+        Action: The graphics cursor's new coordinates are
+                obtained by adding DX and DY respectively
+                to the old values.
 
-                Vt. ka LineTo, MoveTo, LineRel.
+                See also LineTo, MoveTo, LineRel.
 
 
 #### `INVSCR`
 
-     Kirjeldus: Procedure InvScr;
+   Description: Procedure InvScr;
 
-    Kasutamine: InvScr;
+         Usage: InvScr;
 
-       Tegevus: Ekraani inverteerimine.
+        Action: Inverts the screen.
 
-        Märkus: Töötab graafikareziimis.
-                ( vt. SetHgr ).
-
-
+          Note: Works in graphics mode.
+                ( see SetHgr ).
 
 
 
-### 3.2 Spraiditeek (`SPRITE`)
+
+
+### 3.2 Sprite library (`SPRITE`)
 
 
 #### `LOADPIC`
 
-     Kirjeldus: Procedure LoadPic( Var Fail:Bfail;
+   Description: Procedure LoadPic( Var Fail:Bfail;
                                    Var Buf:pic );
-    Kasutamine: LoadPic(bf,pb);
+         Usage: LoadPic(bf,pb);
 
-       Tegevus: Andmete lugemine  failist spraidimuutujasse.
-                Eelnevalt graafikaredaktoriga  GTR loodud ja
-                spraidina salvestatud  ning antud programmis
-                ASSIGN direktiiviga defineeritud fail ( lai-
-                endiga .PCC ) loetakse mällu.  Pildi mõõtmed
-                on piiratud vaba mälu mahuga. Kui tagastatud
-                spraidimuutuja   asukohta  viitava  elemendi
-                buf.place  väärtus  on  0, siis  antud pildi
-                jaoks jäi mälust puudu.
+        Action: Reads data from a file into a sprite variable.
+                A file (with extension .PCC) that was previously
+                created and saved as a sprite with the graphics
+                editor GTR, and defined with the ASSIGN
+                directive in the given program, is read into
+                memory. The image size is limited by the amount
+                of free memory. If the returned sprite
+                variable's element pointing to its location,
+                buf.place, has value 0, then there wasn't
+                enough memory for that image.
 
 
 #### `GETPIC`
 
-     Kirjeldus: Procedure GetPic( X,Y,DX,DY:Integer;
+   Description: Procedure GetPic( X,Y,DX,DY:Integer;
                                   Var Buf:Pic );
 
-    Kasutamine: GetPic(nx,ny,ndx,ndy,pb);
+         Usage: GetPic(nx,ny,ndx,ndy,pb);
 
-       Tegevus: Spraidi lugemine ekraanilt. Spraidimuutujas-
-                se  loetakse  ekraanilt   ristkülikukujuline 
-                ala,  mille  vasak ülemine nurk asub punktis 
-                X,Y ja küljepikkused on vastavalt DX ja DY.
-                Parameetri Mood tähendust on seletatud prot-
-                seduuri PutPixel juures. 
+        Action: Reads a sprite from the screen. A rectangular
+                area whose top-left corner is at point X,Y
+                with side lengths DX and DY is read from the
+                screen into the sprite variable.
+                The meaning of the Mood parameter is
+                explained for the PutPixel procedure.
 
-        Märkus: Töötab graafikareziimis ja ekraanireziimides
-                0 ja 1 ( vt. SetHgr ja Screen ).
+          Note: Works in graphics mode and screen modes
+                0 and 1 (see SetHgr and Screen).
 
 
 #### `PUTPIC`
 
-     Kirjeldus: Procedure PutPic( Buf:Pic;
+   Description: Procedure PutPic( Buf:Pic;
                                   X,Y,Delta,Mood:Integer );
 
-    Kasutamine: PutPic(pb,nx,ny,nd,nm);
+         Usage: PutPic(pb,nx,ny,nd,nm);
 
-       Tegevus: Spraidi paigutamine ekraanile. Sprait paigu-
-                tatakse  kuvari ekraanile  nii,  et  spraidi 
-                vasak ülemine nurk asub punktis koordinaati-
-                dega  X  ja Y.  DELTA  näitab  taustkujutise 
-                originaali  asukoha  nihet  ekraani   alguse 
-                suhtes (harilikult DELTA=0). 
-                Parameetri Mood tähendust on seletatud prot-
-                seduuri PutPixel juures. 
+        Action: Places a sprite on the screen. The sprite is
+                placed on the display so that its top-left
+                corner is at the point with coordinates X
+                and Y. DELTA gives the offset of the
+                background image source from the start of the
+                screen (normally DELTA=0).
+                The meaning of the Mood parameter is
+                explained for the PutPixel procedure.
 
-        Märkus: Töötab graafikareziimis ja ekraanireziimides
-                0 ja 1 ( vt. SetHgr ja Screen ).
+          Note: Works in graphics mode and screen modes
+                0 and 1 (see SetHgr and Screen).
 
 
 #### `MOVEPIC`
 
-     Kirjeldus: Procedure MovePic( Var Buf:Pic;
+   Description: Procedure MovePic( Var Buf:Pic;
                                    DX,DY,Mood:Integer );
 
-    Kasutamine: MovePic(nb,ndx,ndy,nm);
+         Usage: MovePic(nb,ndx,ndy,nm);
 
-       Tegevus: Spraidi liigutamine ekraanil.  Eelnevalt ku-
-                vari  ekraanile paigutatud spraiti  liiguta-
-                takse  parameetritega DX ja DY määratud suu-
-                nas.
-                Parameetri Mood tähendust on seletatud prot-
-                seduuri PutPixel juures. 
+        Action: Moves a sprite on the screen. A sprite
+                previously placed on the display is moved in
+                the direction specified by the parameters DX
+                and DY.
+                The meaning of the Mood parameter is
+                explained for the PutPixel procedure.
 
-        Märkus: Töötab graafikareziimis ja ekraanireziimides
-                0 ja 1 ( vt. SetHgr ja Screen ).
+          Note: Works in graphics mode and screen modes
+                0 and 1 (see SetHgr and Screen).
 
 
 #### `GETMEM`
 
-     Kirjeldus: Function GetMem( N:Integer ):_Pointer;
+   Description: Function GetMem( N:Integer ):_Pointer;
 
-    Kasutamine: Var Pnt:_Pointer;
+         Usage: Var Pnt:_Pointer;
                 ...
                 Pnt:=GetMem(nx);
 
-       Tegevus: Mälu eraldamine. Kui leidub N baiti vaba mä-
-                lu,  siis reserveeritakse see ja funktsiooni 
-                väärtusena  tagastatakse  sellele  mäluosale 
-                osutav viit. Kui vaba mälu ei leidu, siis on 
-                viida väärtus 0.
+        Action: Allocates memory. If N bytes of free memory
+                are available, they are reserved and the
+                function returns a pointer to that memory
+                area. If no free memory is available, the
+                pointer value is 0.
 
 
 
 
 
-### 3.3 Kuvavorminguteek (`SCREEN`)
+### 3.3 Display formatting library (`SCREEN`)
 
 
 
 #### `CLRSCR`
 
-     Kirjeldus: Procedure ClrScr;
+   Description: Procedure ClrScr;
 
-    Kasutamine: ClrScr;
+         Usage: ClrScr;
 
-       Tegevus: Puhastatakse  ekraan ja viiakse kursor koor-
-                dinaatidele 0,0.
+        Action: Clears the screen and moves the cursor to
+                coordinates 0,0.
 
 
 #### `CLREOSCR`
 
-     Kirjeldus: Procedure ClrEoScr;
+   Description: Procedure ClrEoScr;
 
-    Kasutamine: ClrEoScr;
+         Usage: ClrEoScr;
 
-       Tegevus: Puhastatakse ekraan alates kursori asukohast
-                kuni ekraani lõpuni.
+        Action: Clears the screen from the cursor's position
+                to the end of the screen.
 
 
 
 #### `CLREOLN`
 
-     Kirjeldus: Procedure ClrEoLn;
+   Description: Procedure ClrEoLn;
 
-    Kasutamine: ClrEoLn;
+         Usage: ClrEoLn;
 
-       Tegevus: Puhastatakse ekraan alates kursori asukohast
-                kuni rea lõpuni.
+        Action: Clears the screen from the cursor's position
+                to the end of the line.
 
 
 
 #### `SCROLON`
 
-     Kirjeldus: Procedure ScrolOn;
+   Description: Procedure ScrolOn;
 
-    Kasutamine: ScrolOn;
+         Usage: ScrolOn;
 
-       Tegevus: Lubatakse kuva kerimine.
+        Action: Enables display scrolling.
 
 
 
 #### `SCROLOFF`
 
-     Kirjeldus: Procedure ScrolOff;
+   Description: Procedure ScrolOff;
 
-    Kasutamine: ScrolOff;
+         Usage: ScrolOff;
 
-       Tegevus: Keelatakse kuva kerimine.
+        Action: Disables display scrolling.
 
 
 
 #### `CURSON`
 
-     Kirjeldus: Procedure CursOn;
+   Description: Procedure CursOn;
 
-    Kasutamine: CursOn;
+         Usage: CursOn;
 
-       Tegevus: Lubada kursori näitamine.
+        Action: Enables display of the cursor.
 
 
 
 #### `CURSOFF`
 
-     Kirjeldus: Procedure CursOff;
+   Description: Procedure CursOff;
 
-    Kasutamine: CursOff;
+         Usage: CursOff;
 
-       Tegevus: Keelata kursori näitamine.
+        Action: Disables display of the cursor.
 
 
 #### `GOTOXY`
 
-     Kirjeldus: Procedure GotoXY( X,Y:Integer );
+   Description: Procedure GotoXY( X,Y:Integer );
 
-    Kasutamine: GotoXY(nx,ny);
+         Usage: GotoXY(nx,ny);
 
-       Tegevus: Kursori paigutamine koordinaatidele X,Y.
-                X-koordinaat  võib omada väärtusi 0-st  kuni 
-                (ekraani laius - 1)-ni ja  y-koordinaat 0-st 
-                kuni (ekraani kõrgus - 1)-ni.
+        Action: Places the cursor at coordinates X,Y.
+                The X-coordinate may take values from 0
+                to (screen width - 1) and the Y-coordinate
+                from 0 to (screen height - 1).
 
 
 #### `HOME`
 
-     Kirjeldus: Procedure Home;
+   Description: Procedure Home;
 
-    Kasutamine: Home;
+         Usage: Home;
 
-       Tegevus: Kursori paigutamine koordinaatidele 0,0  ehk 
-                ekraani vasakusse ülemisse nurka.
+        Action: Places the cursor at coordinates 0,0,
+                i.e. the top-left corner of the screen.
 
 
 
 #### `LEFT`
 
-     Kirjeldus: Procedure Left;
+   Description: Procedure Left;
 
-    Kasutamine: Left;
+         Usage: Left;
 
-       Tegevus: Kursorit  liigutatakse ühe märgi võrra vasa-
-                kule.
+        Action: Moves the cursor one character to the left.
 
 
 
 #### `RIGHT`
 
-     Kirjeldus: Procedure Right;
+   Description: Procedure Right;
 
-    Kasutamine: Right;
+         Usage: Right;
 
-       Tegevus: Kursorit liigutatakse ühe märgi võrra  pare-
-                male.
+        Action: Moves the cursor one character to the right.
 
 
 
 #### `UP`
 
-     Kirjeldus: Procedure Up;
+   Description: Procedure Up;
 
-    Kasutamine: Up;
+         Usage: Up;
 
-       Tegevus: Kursorit liigutatakse ühe rea võrra ülesse.
+        Action: Moves the cursor one line up.
 
 
 
 #### `DOWN`
 
-     Kirjeldus: Procedure Down;
+   Description: Procedure Down;
 
-    Kasutamine: Down;
+         Usage: Down;
 
-       Tegevus: Kursorit liigutatakse ühe rea võrra alla.
+        Action: Moves the cursor one line down.
 
 
 
 #### `WHEREXY`
 
-     Kirjeldus: Procedure WhereXY( Var X,Y:Integer );
+   Description: Procedure WhereXY( Var X,Y:Integer );
 
-    Kasutamine: WhereXY(mx,my);
+         Usage: WhereXY(mx,my);
 
-       Tegevus: Tagastatakse kursori koordinaadid.
+        Action: Returns the cursor's coordinates.
 
 
 
 
 #### `INVERSE`
 
-     Kirjeldus: Procedure Inverse;
+   Description: Procedure Inverse;
 
-    Kasutamine: Inverse;
+         Usage: Inverse;
 
-       Tegevus: Järgnev tekst kujutatakse inversioonis.
+        Action: Subsequent text is displayed in inverse.
 
 
 
 #### `NORMAL`
 
-     Kirjeldus: Procedure Normal;
+   Description: Procedure Normal;
 
-    Kasutamine: Normal;
+         Usage: Normal;
 
-       Tegevus: Järgnev tekst kujutatakse normaalselt.
+        Action: Subsequent text is displayed normally.
 
 
 #### `SCREEN`
 
-     Kirjeldus: Procedure Screen( N:Integer );
+   Description: Procedure Screen( N:Integer );
 
-    Kasutamine: Screen(nn);
+         Usage: Screen(nn);
 
-       Tegevus: Valitakse reziim teksti kuvamiseks:
-                    N = 0  ->  40x24 märki
-                    N = 1  ->  53x24 märki
-                    N = 2  ->  64x20 märki 
+        Action: Selects the text-display mode:
+                    N = 0  ->  40x24 characters
+                    N = 1  ->  53x24 characters
+                    N = 2  ->  64x20 characters
 
 
 
 #### `OPENWND`
 
-     Kirjeldus: Procedure OpenWnd( X1,Y1,X2,Y2:Integer );
+   Description: Procedure OpenWnd( X1,Y1,X2,Y2:Integer );
 
-    Kasutamine: OpenWnd(nx1,ny1,nx2,ny2);
+         Usage: OpenWnd(nx1,ny1,nx2,ny2);
 
-       Tegevus: "Akna"  avamine.  Ekraani  reziimides 1 ja 2 
-                peavad X1 ja (X2+1) jaguma 4-ga. 
-                ( Vt. Screen )
+        Action: Opens a "window". In screen modes 1 and 2,
+                X1 and (X2+1) must be divisible by 4.
+                ( See Screen )
 
 
 
 #### `CLOSEWND`
 
-     Kirjeldus: Procedure CloseWnd;
+   Description: Procedure CloseWnd;
 
-    Kasutamine: CloseWnd;
+         Usage: CloseWnd;
 
-       Tegevus: "Akna" sulgemine.
+        Action: Closes the "window".
 
 
 
@@ -686,238 +681,236 @@ järgmisel kujul:
 
 
 
+     
 
+     
 
+   Description: Function ReadKey:Integer;
 
-     Kirjeldus: Function ReadKey:Integer;
-
-    Kasutamine: Var Code:Integer;
+         Usage: Var Code:Integer;
                 ...
                 Code:=ReadKey;
 
-       Tegevus: Klaviatuurilt lugemise funktsioon.  Kui kla-
-                viatuuril  on  vajutatud  mõnele  sõrmisele, 
-                siis funktsiooni väärtuseks on vastava märgi 
-                kood, vastasel juhul on väärtuseks 0.
+        Action: Keyboard-read function. If a key on the
+                keyboard has been pressed, the function's
+                value is the code of the corresponding
+                character; otherwise the value is 0.
 
 
 #### `KBEEPON`
 
-     Kirjeldus: Procedure KBeepOn;
+   Description: Procedure KBeepOn;
 
-    Kasutamine: KBeepOn;
+         Usage: KBeepOn;
 
-       Tegevus: Lubatakse  sõrmiste vajutamiste heliga  kvi-
-                teerimine.
+        Action: Enables acknowledging key presses with sound.
 
 
 
 #### `KBEEPOFF`
 
-     Kirjeldus: Procedure KBeepOff;
+   Description: Procedure KBeepOff;
 
-    Kasutamine: KBeepOff;
+         Usage: KBeepOff;
 
-       Tegevus: Keelatakse  sõrmiste vajutamiste heliga kvi-
-                teerimine.
-
+        Action: Disables acknowledging key presses with sound.
 
 
 
-### 3.4  Varia (`UTILIT`)
+
+### 3.4  Miscellaneous (`UTILIT`)
 
 
 #### `RSTTIMER`
 
-     Kirjeldus: Procedure RstTimer;
+   Description: Procedure RstTimer;
 
-    Kasutamine: RstTimer;
+         Usage: RstTimer;
 
-       Tegevus: Taimeri nullimine  ja  käivitamine stopperi-
-                reziimis.
+        Action: Resets the timer and starts it in stopwatch
+                mode.
 
 
 
 #### `TIMER`
 
-     Kirjeldus: Function Timer:Integer;
+   Description: Function Timer:Integer;
 
-    Kasutamine: Var Clock:Integer;
+         Usage: Var Clock:Integer;
                 ...
                 Clock:=Timer;
 
-       Tegevus: Funktsioon taimeri seisu lugemiseks.  Funkt-
-                sioon  tagastab stopperireziimis  käivitatud 
-                taimeri (vt.  RstTimer ) registri  väärtuse, 
-                mille 1 ühik = 20 millisekundiga.
+        Action: Function for reading the timer's state. The
+                function returns the value of the timer
+                register started in stopwatch mode (see
+                RstTimer), where 1 unit = 20 milliseconds.
 
 
 
 
 #### `MOUSE`
 
-     Kirjeldus: Procedure Mouse( Var Ud,Rud,Rl,Rrl,
+   Description: Procedure Mouse( Var Ud,Rud,Rl,Rrl,
                                      Lsw,Rsw:Boolean );
 
-    Kasutamine: Mouse(lud,lrud,lrl,lrrl,llsw,lrsw);
+         Usage: Mouse(lud,lrud,lrl,lrrl,llsw,lrsw);
 
-       Tegevus: "Hiire" info lugemine. 
-                Ud  - viimane liikumine üles-alla sihis;
-                         ( T - alla, F - üles )
-                Rud - jooksev liikumine üles-alla sihis;
-                         ( T - liigub, F - ei liigu )
-                Rl  - viimane liikumine horisontaalsihis;
-                         ( T - paremale, F - vasakule )
-                Rrl - jooksev liikumine horisontaalis;
-                Rsw - parema nupu olek;
-                Lsw - vasaku nupu olek.
+        Action: Reads "mouse" info. 
+                Ud  - last movement in the up–down axis;
+                         ( T - down, F - up )
+                Rud - current movement in the up–down axis;
+                         ( T - moving, F - not moving )
+                Rl  - last movement in the horizontal axis;
+                         ( T - right, F - left )
+                Rrl - current movement in the horizontal axis;
+                Rsw - state of the right button;
+                Lsw - state of the left button.
 
-        Märkus: Kui  "hiir" ei ole arvuti konfiguratsioonis, 
-                siis põhjustab selle protseduuri poole pöör-
-                dumine arvuti "kinni jooksmise".
+          Note: If a "mouse" is not in the computer's
+                configuration, calling this procedure causes
+                the computer to "hang".
 
 
 
 #### `INITPR`
 
-     Kirjeldus: Function InitPr:Boolean;
+   Description: Function InitPr:Boolean;
 
-    Kasutamine: if Not InitPr then WriteLn('Viga!');
+         Usage: if Not InitPr then WriteLn('Error!');
 
-       Tegevus: Initsialiseerib  paralleelvärati  printeriga
-                suhtlemiseks  ja kontrollib printeri tööval-
-                midust.  Kui printer ei ole külge  ühendatud 
-                või sisse lülitatud, tagastatakse tõeväärtus 
-                FALSE.
+        Action: Initialises the parallel port for
+                communicating with the printer and checks the
+                printer's readiness. If the printer is not
+                connected or switched on, the boolean value
+                FALSE is returned.
 
 
 
 #### `PRCHR`
 
-     Kirjeldus: Procedure PrChr( Ch:Char );
+   Description: Procedure PrChr( Ch:Char );
 
-    Kasutamine: PrChr('a'); PrChr(chr(13)); PrChr(cc);
+         Usage: PrChr('a'); PrChr(chr(13)); PrChr(cc);
 
-       Tegevus: Printerile saadetakse  parameetriga määratud
-                märk.
+        Action: The character given by the parameter is sent
+                to the printer.
 
-        Märkus: Eelnevalt on  vajalik  kasutada  funktsiooni
-                InitPr.
+          Note: The function InitPr must be used first.
 
 
 #### `SOUND`
 
-     Kirjeldus: Procedure Sound( Freq,Delay:Integer );
+   Description: Procedure Sound( Freq,Delay:Integer );
 
-    Kasutamine: Sound(nf,nd);
+         Usage: Sound(nf,nd);
 
-       Tegevus: Käivitab  helisagedusgeneraatori parameetri-
-                ga  Freq määratud sagedusel ja Delay-ga mää-
-                ratud kestvusega millisekundites.
+        Action: Starts the audio-frequency generator at the
+                frequency given by Freq and for the duration
+                in milliseconds given by Delay.
 
 
 
 #### `VOLUME`
 
-     Kirjeldus: Procedure Volume( V:Integer );
+   Description: Procedure Volume( V:Integer );
 
-    Kasutamine: Volume(nv);
+         Usage: Volume(nv);
 
-       Tegevus: Määrab helisignaali tugevuse. Kui V=0, siis
-                on heli nõrk, kui V>0, siis tugev.
+        Action: Sets the volume of the audio signal. If V=0,
+                the sound is weak; if V>0, it is strong.
 
 
 
 
 #### `RANDOM`
 
-     Kirjeldus: Function Random( Range:Integer ):Integer;
+   Description: Function Random( Range:Integer ):Integer;
 
-    Kasutamine: Var Arv:Integer;
+         Usage: Var Arv:Integer;
                 ...
                 Arv:=Random(Random(nr));
 
-       Tegevus: Funktsioon tagastab arvu,  mis omab väärtust 
-                0-st kuni (Range - 1)-ni. Arvude juhuslikkus 
-                sõltub parameetrist Range ja funktsiooni ka-
-                sutamise ajast.
+        Action: The function returns a number with a value
+                from 0 to (Range - 1). The randomness of the
+                numbers depends on the Range parameter and on
+                the time at which the function is used.
 
 
 
 
-### 3.5  Kettateek (`DISK`)
+### 3.5  Disk library (`DISK`)
 
 
 #### `SELECTDISK`
 
-     Kirjeldus: Procedure SelectDisk( Ds:Char );
+   Description: Procedure SelectDisk( Ds:Char );
 
-    Kasutamine: SelectDisc('B');
+         Usage: SelectDisc('B');
 
-       Tegevus: Muudab aktiivseks parameetriga näidatud 
-                kettaseadme.
+        Action: Makes the disk drive indicated by the
+                parameter the active one.
 
 
 
 #### `SETTRACK`
 
-     Kirjeldus: Procedure SetTrack( Tr:Integer );
+   Description: Procedure SetTrack( Tr:Integer );
 
-    Kasutamine: SetTrack(ntr);
+         Usage: SetTrack(ntr);
 
-       Tegevus: Määrab kettal raja, millega opereeritakse.
+        Action: Sets the track on the disk that will be
+                operated on.
 
 
 
 #### `SETSECTOR`
 
-     Kirjeldus: Procedure SetSector( Sc:Integer );
+   Description: Procedure SetSector( Sc:Integer );
 
-    Kasutamine: SetSector(nsc);
+         Usage: SetSector(nsc);
 
-       Tegevus: Määrab  kettal  loogilise  sektori,  millega 
-                opereeritakse.
+        Action: Sets the logical sector on the disk that
+                will be operated on.
 
 
 
 #### `SETDMA`
 
-     Kirjeldus: Procedure SetDma( M:Integer );
+   Description: Procedure SetDma( M:Integer );
 
-    Kasutamine: Var Buf:Array [ 0..127 ] of Byte;
+         Usage: Var Buf:Array [ 0..127 ] of Byte;
                 ...
                 SetDma( Addr(Buf) );
 
-       Tegevus: Määrab aadressi, mida kasutatakse info puhv-
-                rina  ketta lugemis- ja salvestamisoperatsi-
-                oonides.  Puhvri suurus peab olema  vähemalt 
-                128 baiti.
+        Action: Sets the address used as the information
+                buffer in disk read and save operations. The
+                buffer size must be at least 128 bytes.
 
 
                
 #### `READDISK`
 
-     Kirjeldus: Procedure ReadDisk;
+   Description: Procedure ReadDisk;
 
-    Kasutamine: ReadDisk;
+         Usage: ReadDisk;
 
-       Tegevus: Protseduuridega SetTrack ja SetSector määra-
-                tud  kohast kettal loetakse 128 baiti  infot 
-                ja  salvestatakse mällu protseduuriga SetDma 
-                määratud kohta.
+        Action: Reads 128 bytes of information from the
+                location on the disk set by the SetTrack and
+                SetSector procedures, and stores it in memory
+                at the location set by the SetDma procedure.
 
 
 
 #### `WRITEDISK`
 
-     Kirjeldus: Procedure WriteDisk;
+   Description: Procedure WriteDisk;
 
-    Kasutamine: WriteDisk;
+         Usage: WriteDisk;
 
-       Tegevus: Protseduuriga  SetDma määratud kohast  mälus 
-                loetakse  128  baiti infot ja  salvestatakse 
-                kettale protseduuridega SetTrack ja  SetSec-
-                tor määratud kohta.
+        Action: Reads 128 bytes from the location in memory
+                set by the SetDma procedure, and stores them
+                on the disk at the location set by the
+                SetTrack and SetSector procedures.
 
 
 
@@ -925,8 +918,8 @@ järgmisel kujul:
 ```
 ============================================================
 
-  Kui  käesoleva  paketiga töötades tekkib  küsimusi  või 
-               leiate vigu, palun pöörduge:
+  If, while working with this package, you have questions or
+                  find errors, please contact:
 
                     202440 Tartumaa Nõo
                 Nõo Keskkooli Arvutuskeskus
@@ -935,12 +928,12 @@ järgmisel kujul:
 ============================================================
 ```
 
-### Kasutatud kirjandus
+### References
 
 [^1]: Интеллектуальный терминал для систем реального времени E5104.
-Программное обеспеченйе. Кнйга 3.
+Программное обеспечение. Книга 3.
 
-[^2]: Rein Jürgenson. Programmeerimine Pascalkeeles. Tln.Valgus 1985.
+[^2]: Rein Jürgenson. Programmeerimine Pascalkeeles. Tln. Valgus 1985.
 
 [^3]: Pascal/MT+ Release 5 User's Guide. Third Edition. (c) 1980,1981
 by MT MicroSYSTEMS.

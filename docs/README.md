@@ -1,1 +1,1 @@
-Siin kataloogis on peamiselt JUKUt puudutav dokumentatsioon, sh ketastelt taasatud [JUKU tarkvara nimekiri](tarkvara-kataloog.md), mille autoriteetseks algkujuks on kontrollsummadega [`tarkvara-kataloog.txt`](tarkvara-kataloog.txt).
+This directory contains mainly JUKU-related documentation, including a [list of JUKU software](tarkvara-kataloog.md) recovered from disks, whose authoritative source is the checksummed [`tarkvara-kataloog.txt`](tarkvara-kataloog.txt).

@@ -1,6 +1,6 @@
-# Eesti ajaloolistest arvutimängudest
+# On historical Estonian computer games
 
-(_Kopeeritud algsest README failist, pole täielik nimekiri._)
+(_Copied from the original README file, not a complete list._)
 
 * http://dan.bmonde.net/failid/esitlused/eesti_oma_m2ngud.pdf
 * https://kodu.ut.ee/~lipmaa/msx/

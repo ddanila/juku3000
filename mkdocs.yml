@@ -1,12 +1,16 @@
 site_name: juku3000
 site_description: Kooliarvuti JUKU igavene digitaalne elu
-site_url: https://j3k.infoaed.ee/
+site_url: https://j3k.borjch.com/
 repo_name: infoaed/juku3000
 repo_url: https://github.com/infoaed/juku3000
 edit_uri: ""
 site_author: juku3000
 extra_css:
    - css/extra.css
+
+exclude_docs: |
+  Mikroarvuti Juku E5101 kasutamisjuhend 1988 (168lk, eesti k).pdf
+  JUKU E5104 Kasutusjuhend 3 osa (286lk, vene k).pdf
 
 theme:
     name: material

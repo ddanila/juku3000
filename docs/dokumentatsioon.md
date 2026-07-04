@@ -2,13 +2,13 @@
 
 ## EKTA E5101
 
-* [Juku arvuti E5101 joonised](https://elektroonikamuuseum.ee/failid/juku/e5101  -joonised/jooniste_nimekiri.pdf) (1987)
-    - [Emaplaat](https://elektroonikamuuseum.ee/failid/juku/e5101  -joonised/emaplaat.pdf)
-    - [Klaviatuur](https://elektroonikamuuseum.ee/failid/juku/e5101  -joonised/klaviatuur.pdf)
-    - [Komponendid](https://elektroonikamuuseum.ee/failid/juku/e5101  -joonised/komponendid.pdf)
-    - [Korpus](https://elektroonikamuuseum.ee/failid/juku/e5101  -joonised/korpus.pdf)
-    - [Protsessori moodul](https://elektroonikamuuseum.ee/failid/juku/e5101  -joonised/protsessori%20moodul.pdf)
-    - [Toiteplokk](https://elektroonikamuuseum.ee/failid/juku/e5101  -joonised/toiteplokk.pdf)
+* [Juku arvuti E5101 joonised](https://elektroonikamuuseum.ee/failid/juku/e5101-joonised/jooniste_nimekiri.pdf) (1987)
+    - [Emaplaat](https://elektroonikamuuseum.ee/failid/juku/e5101-joonised/emaplaat.pdf)
+    - [Klaviatuur](https://elektroonikamuuseum.ee/failid/juku/e5101-joonised/klaviatuur.pdf)
+    - [Komponendid](https://elektroonikamuuseum.ee/failid/juku/e5101-joonised/komponendid.pdf)
+    - [Korpus](https://elektroonikamuuseum.ee/failid/juku/e5101-joonised/korpus.pdf)
+    - [Protsessori moodul](https://elektroonikamuuseum.ee/failid/juku/e5101-joonised/protsessori_moodul.pdf)
+    - [Toiteplokk](https://elektroonikamuuseum.ee/failid/juku/e5101-joonised/toiteplokk.pdf)
 * [Mikroarvuti JUKU kasutamisjuhend](https://elektroonikamuuseum.ee/failid/juku/kirjandus/Mikroarvuti_JUKU_kasutamisjuhend_1988.pdf) (1988)
 
 ## Baltijets E5014

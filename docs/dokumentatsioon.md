@@ -7,17 +7,17 @@
     - [Klaviatuur](https://elektroonikamuuseum.ee/failid/juku/e5101-joonised/klaviatuur.pdf)
     - [Komponendid](https://elektroonikamuuseum.ee/failid/juku/e5101-joonised/komponendid.pdf)
     - [Korpus](https://elektroonikamuuseum.ee/failid/juku/e5101-joonised/korpus.pdf)
-    - [Protsessori moodul](https://elektroonikamuuseum.ee/failid/juku/e5101-joonised/protsessori_moodul.pdf)
+    - [Protsessori moodul](https://elektroonikamuuseum.ee/failid/juku/e5101-joonised/protsessori_amoodul.pdf)
     - [Toiteplokk](https://elektroonikamuuseum.ee/failid/juku/e5101-joonised/toiteplokk.pdf)
 * [Mikroarvuti JUKU kasutamisjuhend](https://elektroonikamuuseum.ee/failid/juku/kirjandus/Mikroarvuti_JUKU_kasutamisjuhend_1988.pdf) (1988)
 
-## Baltijets E5014
+## Baltijets E5104
 
 * [Интеллектуальный терминал для систем реального времени E5104](https://elektroonikamuuseum.ee/failid/juku/kirjandus/juku_e5104_rus_sisukord.txt) (1988)
     - [Книга 1: Руководство по эксплуатации](https://elektroonikamuuseum.ee/failid/juku/kirjandus/juku_e5104_rus_1.pdf)
     - [Книга 2: Ведомость эксплуатационных документов. Паспорт](https://elektroonikamuuseum.ee/failid/juku/kirjandus/juku_e5104_rus_2.pdf)
     - [Книга 3: Программное обеспечение](https://elektroonikamuuseum.ee/failid/juku/kirjandus/juku_e5104_rus_3.pdf)
-* [Техническая документация на компьютер Juku E5104 из здания завода "Балтиец"](https://elektroonikamuuseum.ee/failid/juku/tech_docs_from_baltijets/000%20Info.pdf) (1988)
+* [Техническая документация на компьютер Juku E5104](https://elektroonikamuuseum.ee/failid/juku/tech_docs_from_baltijets/000%20Info.pdf) (1988)
     - [Technical specifications and testing](https://elektroonikamuuseum.ee/failid/juku/tech_docs_from_baltijets/001%20Technical%20specifications%20and%20testing.pdf)
     - [Schematics and components](https://elektroonikamuuseum.ee/failid/juku/tech_docs_from_baltijets/002%20Schematics%20and%20components.pdf)
     - [Adjustment instructions](https://elektroonikamuuseum.ee/failid/juku/tech_docs_from_baltijets/003%20Adjustment%20instructions.pdf)

@@ -1,4 +1,4 @@
-# Juhend residentsete programmide laaduri `JLOAD.LDR` kasutamiseks.
+# Juhend residentsete programmide laaduri `JLOAD.LDR` kasutamiseks
 
 1.  Residentseks tehtav programm peab  sisaldama
     unikaalset identifikaatorit, mille järgi tehakse

@@ -1,6 +1,6 @@
 # Juhend residentsete programmide laaduri `JLOAD.LDR` kasutamiseks
 
-1.  Residentseks tehtav programm peab  sisaldama
+1.  Residentseks tehtav programm peab sisaldama
     unikaalset identifikaatorit, mille järgi tehakse
     kindlaks, kas programm juba pesitseb mälus või
     mitte. Identifikaator peab paiknema neljanda
@@ -35,7 +35,7 @@
 
     ```
     A>sid
-
+    
     ­#ijload.ldr
     ­#r
     ­#idriver.prl
@@ -56,5 +56,3 @@
     ```
     A>save <n> driver.com
     ```
-
-

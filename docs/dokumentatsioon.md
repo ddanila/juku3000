@@ -36,4 +36,4 @@
 
 ## Tarkvara
 
-* [Pascal/MT+ lisateekide pakett arvutile "JUKU"](pascal/lisateek.md)
+* [Pascal/MT+ lisateekide pakett arvutile "JUKU"](pascal/lisateek.md) (1990)

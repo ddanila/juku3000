@@ -36,10 +36,10 @@
     ```
     A>sid
 
-    \#ijload.ldr
-    \#r
-    \#idriver.prl
-    \#r167
+    ­#ijload.ldr
+    ­#r
+    ­#idriver.prl
+    ­#r167
     ```
     
     Nüüd on mälus laadur koos laetava programmiga

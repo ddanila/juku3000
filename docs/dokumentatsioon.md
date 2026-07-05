@@ -33,3 +33,7 @@
     - [Книга 1: Руководство по эксплуатации](https://elektroonikamuuseum.ee/failid/juku/kirjandus/juku_e5104_rus_1.pdf)
     - [Книга 2: Ведомость эксплуатационных документов. Паспорт](https://elektroonikamuuseum.ee/failid/juku/kirjandus/juku_e5104_rus_2.pdf)
     - [Книга 3: Программное обеспечение](https://elektroonikamuuseum.ee/failid/juku/kirjandus/juku_e5104_rus_3.pdf)
+
+## Tarkvara
+
+* [Pascal/MT+ lisateekide pakett arvutile "JUKU"](pascal/lisateek.md)

@@ -56,10 +56,10 @@ Lindiopsüsteemi puhul on täiendavalt saadaval:
 `LOAD` — faili laadimine lindilt muutmällu  
 `RUN` — laaditud programmi käivitamine  
 `DUMP` — faili sisu väljastus 16-ndkoodis  
-`BLOAD` — faili laadimine plokk-haaval
+`BLOAD` — faili laadimine plokk-haaval  
 `REST` — kustutatud failide taastamine  
 `BASIC` — püsimälus oleva BASICu käivitamine  
-`HELP` — käskude nimekirja kuvamine
+`HELP` — käskude nimekirja kuvamine  
 `MONID` — väljumine monitori  
 
 Andmeid säilitatakse välissalvestil failidena, mille tähistused on kujul:

@@ -36,4 +36,5 @@
 
 ## Tarkvara
 
+* [Juhend residentsete programmide laaduri `JLOAD.LDR` kasutamiseks](resident.md) (1989)
 * [Pascal/MT+ lisateekide pakett arvutile "JUKU"](pascal/lisateek.md) (1990)

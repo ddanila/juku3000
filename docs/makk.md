@@ -1,4 +1,4 @@
-# Juhised magnetofoni tööriistade kasuatamiseks
+# Juhised magnetofoni tööriistade kasutamiseks
 
 Lühendid:
 
@@ -12,22 +12,15 @@ Programmid:
 |              |                                                                       |
 | ------------ | ---------------------------------------------------- |
 | `FORM  .COM` | lindi formateerimine ja süsteemi salvestamine                         |
-|              |                                                                       |
 | `COPA  .COM` | kopeerimine `CP/M` -> `JLOS`, `JLOS` -> `CP/M` ja `CP/M` -> `CP/M`    |
-|              |                                                                       |
 | `COPM  .COM` | kopeerimine `CP/M` -> `MLOS`, `MLOS` -> `CP/M` ja `CP/M` -> `CP/M`    |
 |              | kui `JLOS`-i alt käivitatud,siis `JLOS` -> `MLOS` ja `MLOS` -> `JLOS` |
-|              |                                                                       |
 | `GENA  .COM` | JLOS-i genereerimine                                                  |
-|              |                                                                       |
 | `GENM  .COM` | MLOS-i genereerimine                                                  |
-|              |                                                                       |
 | `ATOS  .SYS` | juhitava lindi op.süsteem                                             |
 |              | (ei ole laademoodul)                                                  |
-|              |                                                                       |
 | `MTOS  .SYS` | mittejuhitava lindi op.süsteem                                        |
 |              | (ei ole laademoodul)                                                  |
-|              |                                                                       |
 | `SETS  .COM` | failide staatuste kuvamiseks ja muutmiseks                            |
 
 ## `FORM.COM`

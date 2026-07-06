@@ -13,8 +13,7 @@ Programmid:
 | ------------ | ---------------------------------------------------- |
 | `FORM  .COM` | lindi formateerimine ja süsteemi salvestamine                         |
 | `COPA  .COM` | kopeerimine `CP/M` -> `JLOS`, `JLOS` -> `CP/M` ja `CP/M` -> `CP/M`    |
-| `COPM  .COM` | kopeerimine `CP/M` -> `MLOS`, `MLOS` -> `CP/M` ja `CP/M` -> `CP/M`    |
-|              | kui `JLOS`-i alt käivitatud,siis `JLOS` -> `MLOS` ja `MLOS` -> `JLOS` |
+| `COPM  .COM` | kopeerimine `CP/M` -> `MLOS`, `MLOS` -> `CP/M` ja `CP/M` -> `CP/M`<br>kui `JLOS`-i alt käivitatud,siis `JLOS` -> `MLOS` ja `MLOS` -> `JLOS` |
 | `GENA  .COM` | JLOS-i genereerimine                                                  |
 | `GENM  .COM` | MLOS-i genereerimine                                                  |
 | `ATOS  .SYS` | juhitava lindi op.süsteem<br>(ei ole laademoodul)                     |
@@ -74,16 +73,10 @@ op.süsteemis `CP/M`.
 | ------------- | ---------------------------------------------------- |
 | `O - (OPEN)`  | lindi kataloogi avamine. |
 | `L - (CLOSE)` | lindi kataloogi sulgemine,kataloog jääb avatuks. |
-| `D - (DIR)`   | ketta/lindikataloogi kuvamine. |
-|               | `A...D` - kettaseade |
-|               | `T`     - lint |
+| `D - (DIR)`   | ketta/lindikataloogi kuvamine.<br>`A...D` - kettaseade<br>`T`     - lint |
 | `E - (EXIT)`  | väljumine programmist. Kui lint on avatud, siis toimub küsimine lindi sulgemise kohta. |
 | `R - (RESET)` | lindi kerimine algusesse ja "reset" ketastele. |
-| `C - (COPY)`  | failide kopeerimine. Esiteks sisestada lähtefaili nimi. Kui sellist faili ei leita,siis ilmub ekraanile vastav teade. Kui failinime ei sisestata, toimub pöördumine programmi põhimnüüsse. Järgmisena sisestada tulemusfaili nimi (võib sisestada ainult seadme tähise, nimi kantakse automaatselt üle lähtefailist). Kui selline fail juba eksisteerib, siis toimub küsimine faili ülekirjutamise kohta. Eitava vastuse korral tuleb failinimi uuesti sisestada. Jaatava vastuse korral kirjutatakse antud fail üle (ka siis, kui on staatusega `R/O`). |
-|               | Failinimes võib kasutada järgmisi seadmete tähistusi: |
-|               | `A...D` - kettaseade |
-|               | `T`     - lint |
-|               | Kui seadme tähis puudub,siis vaadeldakse vaikimisi olevat seadet. |
+| `C - (COPY)`  | failide kopeerimine. Esiteks sisestada lähtefaili nimi. Kui sellist faili ei leita,siis ilmub ekraanile vastav teade. Kui failinime ei sisestata, toimub pöördumine programmi põhimnüüsse. Järgmisena sisestada tulemusfaili nimi (võib sisestada ainult seadme tähise, nimi kantakse automaatselt üle lähtefailist). Kui selline fail juba eksisteerib, siis toimub küsimine faili ülekirjutamise kohta. Eitava vastuse korral tuleb failinimi uuesti sisestada. Jaatava vastuse korral kirjutatakse antud fail üle (ka siis, kui on staatusega `R/O`).<br>Failinimes võib kasutada järgmisi seadmete tähistusi:<br>`A...D` - kettaseade<br>`T`     - lint<br>Kui seadme tähis puudub,siis vaadeldakse vaikimisi olevat seadet. |
 
 
 
@@ -134,10 +127,7 @@ A>SETS [failinimi] [staatus]
 
 |           |                                                                       |
 | --------- | ---------------------------------------------------- |
-| staatuse: | `R/W` - fail lugemiseks ja kirjutamiseks |
-|           | `R/O` - fail ainult lugemiseks |
-|           | `DIR` - mittesüsteemne fail |
-|           | `SYS` - süsteemne fail |
+| staatuse: | `R/W` - fail lugemiseks ja kirjutamiseks<br>`R/O` - fail ainult lugemiseks<br>`DIR` - mittesüsteemne fail<br>`SYS` - süsteemne fail |
 
 
 ## JLOS-i funktsioonid
@@ -145,30 +135,23 @@ A>SETS [failinimi] [staatus]
 |                 |                                                      |
 | --------------- | ---------------------------------------------------- |
 | `DIR [f]`       | failide nimekirja väljastamine |
-| `REN f1=f2`     | faili ümbernimetamine |
-|                 | `f1` - uus  nimi |
-|                 | `f2` - vana nimi |
+| `REN f1=f2`     | faili ümbernimetamine<br>`f1` - uus  nimi<br>`f2` - vana nimi |
 | `ERA f`         | failide kustutamine |
 | `REST f`        | kustutatud faili taastamine |
 | `MEM`           | väljastatakse üldinfo lindi mäluhõive kohta |
 | `TYPE f`        | tekstifaili kuvamine |
 | `DUMP f`        | faili sisu kuvamine 16-süsteemis |
-| `LOAD f [a]`    | faili laadimine muutmällu |
-|                 | `a` - algusaadress (vaikimisi 100H) |
+| `LOAD f [a]`    | faili laadimine muutmällu<br>`a` - algusaadress (vaikimisi 100H) |
 | `RUN [p1] [p2]` | mällu laaditud programmi käivitamine, parameetrid salvestatakse faili juhtplokkidesse |
-| `SAVE n f [a]`  | mälusisu salvestamine faili |
-|                 | `n` - 2K baidiste plokkide arv |
-|                 | `a` - algusaadress (vaikimisi 100H) |
+| `SAVE n f [a]`  | mälusisu salvestamine faili<br>`n` - 2K baidiste plokkide arv<br>`a` - algusaadress (vaikimisi 100H) |
 | `CLOSE`         | kataloogi kirjutamine lindile |
 |                 | (kataloog jääb avatuks) |
 | `OPEN`          | kataloogi lugemine lindilt mällu |
 | `MONID`         | väljumine op.süsteemist monitori |
 | `HELP`          | residentsete funktsioonide loetelu |
 | `CHECK`         | väljastab süsteemse info ja arvutatakse kataloogile uus kontrollsumma. |
-| `DUMP ;a`       | muutmälu kuvamine 16-süsteemis |
-|                 | `a` - algusaadress |
-| `SAVE ;a`       | muutmälu muutmine |
-|                 | `a` - algusaadress |
+| `DUMP ;a`       | muutmälu kuvamine 16-süsteemis<br>`a` - algusaadress |
+| `SAVE ;a`       | muutmälu muutmine<br>`a` - algusaadress |
 
 `Ctrl-C` katkestab funktsiooni täitmise
 
@@ -186,20 +169,14 @@ analoogselt standardse kettaop.süsteemiga `CP/M`.
 | `DIR`           | plokkide nimekirja väljastamine  |
 | `TYPE f`        | tekstifaili kuvamine |
 | `DUMP f`        | faili sisu kuvamine 16-süsteemis |
-| `LOAD f [a]`    | faili laadimine muutmällu |
-|                 | `a` - algusaadress (vaikimisi 100H) |
-| `BLOAD [a]`     | plokkide laadimine muutmällu |
-|                 | `a` - algusaadress |
+| `LOAD f [a]`    | faili laadimine muutmällu<br>`a` - algusaadress (vaikimisi 100H) |
+| `BLOAD [a]`     | plokkide laadimine muutmällu<br>`a` - algusaadress |
 | `RUN [p1] [p2]` | mällu laaditud programmi käivitamine, parameetrid salvestatakse faili juhtplokkidesse |
-| `SAVE n f [a]`  | mälusisu salvestamine faili |
-|                 | `n` - 2K baidiste plokkide arv |
-|                 | `a` - algusaadress (vaikimisi 100H)  |
+| `SAVE n f [a]`  | mälusisu salvestamine faili<br>`n` - 2K baidiste plokkide arv<br>`a` - algusaadress (vaikimisi 100H)  |
 | `MONID`         | väljumine op.süsteemist monitori |
 | `HELP`          | residentsete funktsioonide loetelu |
-| `DUMP ;a`       | muutmälu kuvamine 16-süsteemis |
-|                 | `a` - algusaadress |
-| `SAVE ;a`       | muutmälu muutmine |
-|                 | `a` - algusaadress |
+| `DUMP ;a`       | muutmälu kuvamine 16-süsteemis<br>`a` - algusaadress |
+| `SAVE ;a`       | muutmälu muutmine<br>`a` - algusaadress |
 
 `Ctrl-C` katkestab funktsiooni täitmise
 
@@ -255,8 +232,7 @@ Kui loetakse juhitavat linti, siis
 | ------ | ------------------------------------- |
 | `n`    | absoluutne ploki number |
 | `nimi` | failinimi, kui see plokk kuulub faili lindinimi, kui tühi plokk |
-| `m`    | kui plokk faili ei kuulu, siis 0 |
-|        | kui plokk kuulub faili, siis faili esimese ploki number |
+| `m`    | kui plokk faili ei kuulu, siis 0<br>kui plokk kuulub faili, siis faili esimese ploki number |
    
 Kui loetakse mittejuhitavat linti, siis
 

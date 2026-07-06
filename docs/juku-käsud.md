@@ -49,17 +49,17 @@ Käsuprotsessor (KP) vahetab infot kasutaja ja operatsioonisüsteemi vahel. KP l
 
 Lindiopsüsteemis[^5] võivad olla täiendavalt saadaval:
 
-`MEM` — üldinfo lindi kohta  
 `OPEN` — lindi avamine  
-`CLOSE` — lindi sulgemine  
-`DIRS` — süsteemsete failide kataloogi esitus  
 `LOAD` — faili laadimine lindilt muutmällu  
 `RUN` — laaditud programmi käivitamine  
+`CLOSE` — lindi sulgemine  
+`MEM` — üldinfo lindi kohta  
+`DIRS` — süsteemsete failide kataloogi esitus  
 `DUMP` — faili sisu väljastus 16-ndkoodis  
 `BLOAD` — plokkide laadimine muutmällu  
 `REST` — kustutatud failide taastamine  
-`BASIC` — püsimälus oleva BASICu käivitamine  
 `CHECK` — kataloogi kontrollsumma arvutamine  
+`BASIC` — püsimälus oleva BASICu käivitamine  
 `HELP` — käskude nimekirja kuvamine  
 `MONID` — väljumine monitori  
 

@@ -55,10 +55,10 @@ plugins:
 nav:
     - Tere, Juhan!: index.md
     - JUKU elutsükkel: ajajoon.md
-    - Dokumentatsioon: dokumentatsioon.md
-    - EKDOSi kasutamine: juku-käsud.md
     - MAME käivitamine: mame-käivitamine.md
+    - Süsteemi kasutamine: juku-käsud.md
     - Videote salvestamine: videod.md
+    - Dokumentatsioon: dokumentatsioon.md
     - Ketaste lugemine: kettad.md
     - Mängude ketas 2024: mängude-ketas-2024.md
     - Mängude ketas 2025: porditud-mängud-2025.md

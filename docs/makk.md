@@ -42,7 +42,7 @@ kirjutamiseks. Võib käivitada op.süsteemides `CP/M`, `JLOS` , `MLOS`.
 
  - kui süsteem on juba mällu laaditud, siis tuleb magnetofoni asetada
    lint, millele soovime süsteemi salvestada.
- - kui süsteem ei ole laaditud,tuleb kõigepealt süsteemselt lindilt
+ - kui süsteem ei ole laaditud, tuleb kõigepealt süsteemselt lindilt
    lugeda süsteem, seejärel vahetada linti ning salvestada.
 
 `LOAD` - laadida lindiopsüsteem ketta/lindifailist mällu.
@@ -76,14 +76,14 @@ op.süsteemis `CP/M`.
 | `D - (DIR)`   | ketta/lindikataloogi kuvamine.<br>`A...D` - kettaseade<br>`T`     - lint |
 | `E - (EXIT)`  | väljumine programmist. Kui lint on avatud, siis toimub küsimine lindi sulgemise kohta. |
 | `R - (RESET)` | lindi kerimine algusesse ja "reset" ketastele. |
-| `C - (COPY)`  | failide kopeerimine. Esiteks sisestada lähtefaili nimi. Kui sellist faili ei leita, siis ilmub ekraanile vastav teade. Kui failinime ei sisestata, toimub pöördumine programmi põhimnüüsse. Järgmisena sisestada tulemusfaili nimi (võib sisestada ainult seadme tähise, nimi kantakse automaatselt üle lähtefailist). Kui selline fail juba eksisteerib, siis toimub küsimine faili ülekirjutamise kohta. Eitava vastuse korral tuleb failinimi uuesti sisestada. Jaatava vastuse korral kirjutatakse antud fail üle (ka siis, kui on staatusega `R/O`).<br>Failinimes võib kasutada järgmisi seadmete tähistusi:<br>`A...D` - kettaseade<br>`T`     - lint<br>Kui seadme tähis puudub, siis vaadeldakse vaikimisi olevat seadet. |
+| `C - (COPY)`  | failide kopeerimine. Esiteks sisestada lähtefaili nimi. Kui sellist faili ei leita, siis ilmub ekraanile vastav teade. Kui failinime ei sisestata, toimub pöördumine programmi põhimenüüsse. Järgmisena sisestada tulemusfaili nimi (võib sisestada ainult seadme tähise, nimi kantakse automaatselt üle lähtefailist). Kui selline fail juba eksisteerib, siis toimub küsimine faili ülekirjutamise kohta. Eitava vastuse korral tuleb failinimi uuesti sisestada. Jaatava vastuse korral kirjutatakse antud fail üle (ka siis, kui on staatusega `R/O`).<br>Failinimes võib kasutada järgmisi seadmete tähistusi:<br>`A...D` - kettaseade<br>`T`     - lint<br>Kui seadme tähis puudub, siis vaadeldakse vaikimisi olevat seadet. |
 
 
 
 ## `COPM.COM`
 
 Programm failide kopeerimiseks kettalt mittejuhitavale
-lindile,lindilt kettale ja kettalt kettale. Programm käivitatav
+lindile, lindilt kettale ja kettalt kettale. Programm käivitatav
 op.süsteemis `CP/M` ja oskuslikul kasutajal ka `JLOS`-s.Dialoog
 tarbijaga analoogne programmiga `COPA.COM`.
 
@@ -93,7 +93,7 @@ tarbijaga analoogne programmiga `COPA.COM`.
 Programm juhitava lindiop.süsteemi kirjutamiseks. Prog-
 ramm käivitatav op.süsteemis `CP/M` ja `JLOS`.
  - asetada magnetofonile lähtelint (s.o. lint kus on süsteem).
- - kui süsteem on loetud,tuleb magnetofonile asetada lint,
+ - kui süsteem on loetud, tuleb magnetofonile asetada lint,
    millele soovitakse süsteemi kirjutada.
  - NB! Programmist väljumisel op.süsteemis JLOS tuleb
    magnetofonile asetada lint, mis oli avatud programmi käivitamisel.
@@ -203,7 +203,7 @@ vilkuv tekst: `SWITCH TO READING`
 s.t. magnetofon tuleb lülitada lugemise režiimi.
 
 Kui lindilt lugemise ajal väljastatakse veateade: `CHECKSUM ERROR`,
-siis antud ploki lugemise kordamisel,tuleb linti 
+siis antud ploki lugemise kordamisel, tuleb linti 
 veidike tagasi kerida ja korrata lugemist.
 
 Funktsioonide nr. 21 (kirjutada 128-baidine

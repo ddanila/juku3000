@@ -159,7 +159,7 @@ Opsüsteemi vaikimisi käitumist saab lülitada paojadade abil (klahv `ESC`, see
 
 `ESC` `M` `0` — 40x24 kuvalaotus  
 `ESC` `M` `1` — 53x24 kuvalaotus  
-`ESC` `M` `2` — 64x20 kuvalaotus (võimalik on ka 80x24 laotus[^5])  
+`ESC` `M` `2` — 64x20 kuvalaotus (võimalik on ka 80x24 laotus[^6])  
 `ESC` `0` — klahvivajutuse helisignaali keelamine  
 `ESC` `1` — klahvivajutuse helisignaali lubamine  
 `ESC` `2` — ekraani kerimise keelamine  

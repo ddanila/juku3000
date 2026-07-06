@@ -23,7 +23,7 @@ Programmid:
 ## `FORM.COM`
 
 Programm JLOS-i lintide formateerimiseks ja süsteemi
-kirjutamiseks.Võib käivitada op.süsteemides `CP/M`, `JLOS` , `MLOS`.
+kirjutamiseks. Võib käivitada op.süsteemides `CP/M`, `JLOS` , `MLOS`.
 
 `FORMAT` - lindi formateerimine.
 
@@ -66,13 +66,13 @@ kirjutamiseks.Võib käivitada op.süsteemides `CP/M`, `JLOS` , `MLOS`.
 ## `COPA.COM`
 
 Programm failide kopeerimiseks kettalt juhitavale lindile,
-lindilt kettale ja kettalt kettale.Programm käivitatav ainult
+lindilt kettale ja kettalt kettale. Programm käivitatav ainult
 op.süsteemis `CP/M`.
 
 |               |                                                                       |
 | ------------- | ---------------------------------------------------- |
 | `O - (OPEN)`  | lindi kataloogi avamine. |
-| `L - (CLOSE)` | lindi kataloogi sulgemine,kataloog jääb avatuks. |
+| `L - (CLOSE)` | lindi kataloogi sulgemine, kataloog jääb avatuks. |
 | `D - (DIR)`   | ketta/lindikataloogi kuvamine.<br>`A...D` - kettaseade<br>`T`     - lint |
 | `E - (EXIT)`  | väljumine programmist. Kui lint on avatud, siis toimub küsimine lindi sulgemise kohta. |
 | `R - (RESET)` | lindi kerimine algusesse ja "reset" ketastele. |
@@ -252,7 +252,7 @@ Magnetofoni ühendamiseks arvutiga on komplektis vastav kaabel.
 Juhitava magnetofoni olemasolul kasutatakse
 arvuti pistukupesasid `X5` ja `X4` vastavalt andmesideks
 magnetofoniga ja magnetofoni juhtimiseks. Magnetofon
-ei tohi olla ajutise peatamise reziimis.
+ei tohi olla ajutise peatamise režiimis.
 Mittejuhitava magnetofoni kasutamisel tuleb
 kaabel pistikupesast `X4` eemaldada.
 

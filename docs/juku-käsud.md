@@ -47,7 +47,7 @@ Käsuprotsessor (KP) vahetab infot kasutaja ja operatsioonisüsteemi vahel. KP l
 `USER` — kasutajanumbri valik (0-15)  
 `SAVE` — mälu sisu salvestamine faili (s: `SAVE n failinimi`)  
 
-Lindiopsüsteemi võivad olla täiendavalt saadaval:
+Lindiopsüsteemi võivad olla täiendavalt saadaval[^5]:
 
 `MEM` — üldinfo lindi kohta  
 `OPEN` — lindi avamine  
@@ -177,4 +177,5 @@ _Ülalolev on peamiselt lühendatud ja üldistatud versioon esimeses viites tood
 [^2]: [Интеллектуальный терминал для систем реального времени E5104](https://elektroonikamuuseum.ee/failid/juku/kirjandus/juku_e5104_rus_1.pdf) (1988), ajakohaseim mälutabel 1. raamatus lk 25  
 [^3]: [Mikroarvuti JUKU](ekta_juku.pdf) (1987), tarkvara kirjeldus lk 13jj  
 [^4]: [JUKU E5104 klahvistik MAME emulaatoris](https://infoaed.ee/juku/layout.html) (2024)
-[^5]: [JUKU PC UTILITIES DISK #4](https://github.com/infoaed/juku3000/blob/master/docs/ekdos230.txt#L91-L112) (1989), 80x24 ekraanirežiimi kohta märkus 1  
+[^5]: [Juhised magnetofoni tööriistade kasutamiseks](makk.md#jlos-i-funktsioonid) (1987?)
+[^6]: [JUKU PC UTILITIES DISK #4](https://github.com/infoaed/juku3000/blob/master/docs/ekdos230.txt#L91-L112) (1989), 80x24 ekraanirežiimi kohta märkus 1  

@@ -55,7 +55,7 @@ kirjutamiseks. Võib käivitada op.süsteemides `CP/M`, `JLOS` , `MLOS`.
  * `Ctrl-ESC` viib alati programmi põhimenüüsse.
  * Selle programmiga võib teha ka `MLOS`-i süsteemseid linte:
     - formateerida lindist ainult 8 esimest plokki ja salvestada
-      süsteem MLOS(fail `MTOS.SYS`).
+      süsteem `MLOS` (fail `MTOS.SYS`).
  * Programmi võib käivitada ka op.süsteemis `MLOS`, ning seal
    formateerida linte ning kanda nendele süsteeme.
  * Kui programm on käivitatud op.süsteemis `JLOS`, siis väljumisel

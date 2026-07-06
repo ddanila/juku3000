@@ -207,7 +207,7 @@ siis antud ploki lugemise kordamisel, tuleb linti
 veidike tagasi kerida ja korrata lugemist.
 
 Funktsioonide nr. 21 (kirjutada 128-baidine
-plokk) või nr.43 (kirjutada 2K-baidine plokk) käivitamisel
+plokk) või nr. 43 (kirjutada 2K-baidine plokk) käivitamisel
 väljastatakse ekraani esimesele reale mõneks
 sekundiks vilkuv tekst: `SWITCH TO RECORDING`
 s.t. magnetofon tuleb lülitada kirjutamise režiimi.

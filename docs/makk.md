@@ -13,7 +13,7 @@ Programmid:
 | ------------ | ---------------------------------------------------- |
 | `FORM  .COM` | lindi formateerimine ja süsteemi salvestamine                         |
 | `COPA  .COM` | kopeerimine `CP/M` -> `JLOS`, `JLOS` -> `CP/M` ja `CP/M` -> `CP/M`    |
-| `COPM  .COM` | kopeerimine `CP/M` -> `MLOS`, `MLOS` -> `CP/M` ja `CP/M` -> `CP/M`<br>kui `JLOS`-i alt käivitatud,siis `JLOS` -> `MLOS` ja `MLOS` -> `JLOS` |
+| `COPM  .COM` | kopeerimine `CP/M` -> `MLOS`, `MLOS` -> `CP/M` ja `CP/M` -> `CP/M`<br>kui `JLOS`-i alt käivitatud, siis `JLOS` -> `MLOS` ja `MLOS` -> `JLOS` |
 | `GENA  .COM` | JLOS-i genereerimine                                                  |
 | `GENM  .COM` | MLOS-i genereerimine                                                  |
 | `ATOS  .SYS` | juhitava lindi op.süsteem<br>(ei ole laademoodul)                     |
@@ -32,7 +32,7 @@ kirjutamiseks. Võib käivitada op.süsteemides `CP/M`, `JLOS` , `MLOS`.
  - mitu plokki lugeda? Lugema peab vähemalt 8 plokki.
  - kataloog kontrollida? Pärast kataloogi salvestamist lindile,
    teostatakse selle lugemine ning võrdlemine. Kui kontrollimisel
-   on vigu,siis on võimalus kataloog uuesti salvestada lindile.
+   on vigu, siis on võimalus kataloog uuesti salvestada lindile.
  - süsteem kirjutada? Kui käsuga `LOAD` on laetud op.süsteem,
    siis on kasutajal võimalus pärast formateerimist salvestada
    lindile ka süsteem.
@@ -41,7 +41,7 @@ kirjutamiseks. Võib käivitada op.süsteemides `CP/M`, `JLOS` , `MLOS`.
 `SYSGEN` - lindile süsteemi kirjutamine.
 
  - kui süsteem on juba mällu laaditud, siis tuleb magnetofoni asetada
-   lint,millele soovime süsteemi salvestada.
+   lint, millele soovime süsteemi salvestada.
  - kui süsteem ei ole laaditud,tuleb kõigepealt süsteemselt lindilt
    lugeda süsteem, seejärel vahetada linti ning salvestada.
 
@@ -76,7 +76,7 @@ op.süsteemis `CP/M`.
 | `D - (DIR)`   | ketta/lindikataloogi kuvamine.<br>`A...D` - kettaseade<br>`T`     - lint |
 | `E - (EXIT)`  | väljumine programmist. Kui lint on avatud, siis toimub küsimine lindi sulgemise kohta. |
 | `R - (RESET)` | lindi kerimine algusesse ja "reset" ketastele. |
-| `C - (COPY)`  | failide kopeerimine. Esiteks sisestada lähtefaili nimi. Kui sellist faili ei leita,siis ilmub ekraanile vastav teade. Kui failinime ei sisestata, toimub pöördumine programmi põhimnüüsse. Järgmisena sisestada tulemusfaili nimi (võib sisestada ainult seadme tähise, nimi kantakse automaatselt üle lähtefailist). Kui selline fail juba eksisteerib, siis toimub küsimine faili ülekirjutamise kohta. Eitava vastuse korral tuleb failinimi uuesti sisestada. Jaatava vastuse korral kirjutatakse antud fail üle (ka siis, kui on staatusega `R/O`).<br>Failinimes võib kasutada järgmisi seadmete tähistusi:<br>`A...D` - kettaseade<br>`T`     - lint<br>Kui seadme tähis puudub,siis vaadeldakse vaikimisi olevat seadet. |
+| `C - (COPY)`  | failide kopeerimine. Esiteks sisestada lähtefaili nimi. Kui sellist faili ei leita, siis ilmub ekraanile vastav teade. Kui failinime ei sisestata, toimub pöördumine programmi põhimnüüsse. Järgmisena sisestada tulemusfaili nimi (võib sisestada ainult seadme tähise, nimi kantakse automaatselt üle lähtefailist). Kui selline fail juba eksisteerib, siis toimub küsimine faili ülekirjutamise kohta. Eitava vastuse korral tuleb failinimi uuesti sisestada. Jaatava vastuse korral kirjutatakse antud fail üle (ka siis, kui on staatusega `R/O`).<br>Failinimes võib kasutada järgmisi seadmete tähistusi:<br>`A...D` - kettaseade<br>`T`     - lint<br>Kui seadme tähis puudub, siis vaadeldakse vaikimisi olevat seadet. |
 
 
 
@@ -185,7 +185,7 @@ analoogselt standardse kettaop.süsteemiga `CP/M`.
 
 Kui toimub faili otsimine (`LOAD`, `TYPE`, `DUMP` või
 laademooduli käivitamisel), siis väljastatakse nende
-plokkide päised,mis antud faili ei kuulu.
+plokkide päised, mis antud faili ei kuulu.
 
 Kui tarbijaprogrammis kasutatakse `BLOS`-i
 funktsioone nr. 17 (otsida faili) või nr. 18 (otsida

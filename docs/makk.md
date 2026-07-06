@@ -17,10 +17,8 @@ Programmid:
 |              | kui `JLOS`-i alt käivitatud,siis `JLOS` -> `MLOS` ja `MLOS` -> `JLOS` |
 | `GENA  .COM` | JLOS-i genereerimine                                                  |
 | `GENM  .COM` | MLOS-i genereerimine                                                  |
-| `ATOS  .SYS` | juhitava lindi op.süsteem                                             |
-|              | (ei ole laademoodul)                                                  |
-| `MTOS  .SYS` | mittejuhitava lindi op.süsteem                                        |
-|              | (ei ole laademoodul)                                                  |
+| `ATOS  .SYS` | juhitava lindi op.süsteem<br>(ei ole laademoodul)                     |
+| `MTOS  .SYS` | mittejuhitava lindi op.süsteem<br>(ei ole laademoodul)                |
 | `SETS  .COM` | failide staatuste kuvamiseks ja muutmiseks                            |
 
 ## `FORM.COM`

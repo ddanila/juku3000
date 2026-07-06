@@ -47,7 +47,7 @@ Käsuprotsessor (KP) vahetab infot kasutaja ja operatsioonisüsteemi vahel. KP l
 `USER` — kasutajanumbri valik (0-15)  
 `SAVE` — mälu sisu salvestamine faili (s: `SAVE n failinimi`)  
 
-Lindiopsüsteemi puhul on täiendavalt saadaval:
+Lindiopsüsteemi võivad olla täiendavalt saadaval:
 
 `MEM` — üldinfo lindi kohta  
 `OPEN` — lindi avamine  
@@ -59,7 +59,7 @@ Lindiopsüsteemi puhul on täiendavalt saadaval:
 `BLOAD` — plokkide laadimine muutmällu  
 `REST` — kustutatud failide taastamine  
 `BASIC` — püsimälus oleva BASICu käivitamine  
-`CHECK` — kataloogi kontrollsumma arvutamine
+`CHECK` — kataloogi kontrollsumma arvutamine  
 `HELP` — käskude nimekirja kuvamine  
 `MONID` — väljumine monitori  
 

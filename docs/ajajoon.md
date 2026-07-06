@@ -27,7 +27,7 @@ mai | Kooliarvuti konkursi [konverentsil](https://www.etera.ee/zoom/20621/view?p
 juuni | Popovi nim. teadustehnilise ühingu konkursil [JUKUle ja TARTULE esimene preemia](https://dea.digar.ee/?a=d&d=rahvahaal19860903.2.11.4&e=-------et-25--1--txt-txIN%7ctxTI%7ctxAU%7ctxTA-------------)
 juuli | "[Kas JUKUGA või...](https://arhiiv.err.ee/audio/vaata/kas-jukuga-voi)" aasta alguse lubadus 40 kooliarvutit, järgmise aasta jooksul ületavat arv 1000
 juuli | "[Mikroarvuti JUKU kasutamisjuhend](https://arti.ee/juku/Mikroarvuti%20Juku%20E5101%20kasutamisjuhend%201988%20%28168lk%2C%20eesti%20k%29.pdf)" läheb ladumisele
-november | RET saab vahepeal kaduma läinud tehnilise dokumentatsiooni uuesti
+november | RET saab [vahepeal kaduma läinud tehnilise dokumentatsiooni](dokumentatsioon.md#ekta-e5101) uuesti
 november | Häälestatakse esimene JUKU, mis valmis algselt korpusi tootma pidanud ESTRONis
 
 ## 1987 -- Kadunud mudelid E5102 ja E5103
@@ -59,7 +59,7 @@ jaanuar            | EKDOS 2.29 (ja paralleelselt millagi RomBios 3.43m)
 mai                | "[JUKU konarlik tee](https://www.etera.ee/zoom/29230/view?page=82&p=separate&tool=info&view=0,0,2373,3411)" tootmiseni leiab kajastust partei häälekandjas
 september-oktoober | Kõrgkeeled ja progemistööriistad PASCAL, B80, BASCOM, F80, L80, SID, ASM
 oktoober           | Demod, printeridraiverid, võrguopsüsteem
-november           | Baltijetsi tehas Narvas saab JUKU tehnilise dokumentatsiooni, ülesanne JUKU tootmiseks NSVLi ministrite nõukogult
+november           | Baltijetsi tehas Narvas saab [JUKU tehnilise dokumentatsiooni](dokumentatsioon.md#baltijets-e5104), ülesanne JUKU tootmiseks NSVLi ministrite nõukogult
 detsember          | Esimesed 40 JUKU kooliarvutit [tulevad lõpuks Baltijetsi tootmisliinilt](https://dea.digar.ee/?a=d&d=rahvahaal19891111.2.17&srpos=8&e=-------et-25--1--txt-txIN-------------)
 
 ## 1989 -- Juku jõuab koolimajja

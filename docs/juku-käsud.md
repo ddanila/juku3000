@@ -54,9 +54,9 @@ Lindiopsüsteemis[^5] võivad olla täiendavalt saadaval:
 `RUN` — laaditud programmi käivitamine  
 `CLOSE` — lindi sulgemine  
 `MEM` — üldinfo lindi kohta  
-`REST` — kustutatud failide taastamine  
 `DIRS` — süsteemsete failide kataloogi esitus  
 `CHECK` — kataloogi kontrollsumma arvutamine  
+`REST` — kustutatud failide taastamine  
 `BLOAD` — plokkide laadimine muutmällu  
 `DUMP` — faili sisu väljastus 16-ndkoodis  
 `BASIC` — püsimälus oleva BASICu käivitamine  

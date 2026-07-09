@@ -34,7 +34,7 @@ november | Häälestatakse esimene JUKU, mis valmis algselt korpusi tootma pidan
 
 * RETi juhtkonnavahetusega kaasnenud "[täieliku ükskõiksuse tõttu](https://www.etera.ee/zoom/19156/view?page=108&p=separate&tool=info&view=0,1175,2323,2716)" tootmist ei alustata
 * Koostatakse suurem osa tulevase kooliarvuti JUKU tarkvarast
-* ESTRON ja EKTA valmistavad lindiopsüsteemiga [JUKU E5101](https://et.wikipedia.org/wiki/Juku_(arvuti)#/media/Fail:Estroni_JUKU_koos_kassetilugeja,_toiteploki_ja_monitoriga.jpg) ja täiendavate võimalustega JUSSi [E5102](https://elektroonikamuuseum.ee/arvuti_hajusjuhtimissusteem_satelliit/SATELLIIT-2%20-%20Microcomputer%20series%20for%20distributed%20control.pdf) ja [E5103](https://elektroonikamuuseum.ee/juku_arvuti_juss_E5103.html) [väikseid katse- ja üksikpartiisid](https://www.etera.ee/zoom/29230/view?page=84&p=separate&tool=info&view=0,0,2373,3411)
+* ESTRON ja EKTA valmistavad lindiopsüsteemiga [JUKU E5101](https://et.wikipedia.org/wiki/Juku_(arvuti)#/media/Fail:Estroni_JUKU_koos_kassetilugeja,_toiteploki_ja_monitoriga.jpg) ja täiendavate võimalustega [JUSS E5102](https://elektroonikamuuseum.ee/arvuti_hajusjuhtimissusteem_satelliit/SATELLIIT-2%20-%20Microcomputer%20series%20for%20distributed%20control.pdf) ja [JUSS E5103](https://elektroonikamuuseum.ee/juku_arvuti_juss_E5103.html) [väikseid katse- ja üksikpartiisid](https://www.etera.ee/zoom/29230/view?page=84&p=separate&tool=info&view=0,0,2373,3411)
 
 |||
 |-|-|

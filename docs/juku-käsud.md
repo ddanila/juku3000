@@ -22,7 +22,7 @@ Drive assignments:
 <C> — RAM disk 192K
 ```
 
-After that the prompt `A>` appears, indicating the OS's readiness; it lets you [enter commands](#opsusteemi-kasud) or [run programs](#programmifailide-kaivitamine). For instance it is wise to start by looking at the file catalogue on the disk with the command `DIR`, or to read the included message by entering `TYPE READ.ME`.
+After that the prompt `A>` appears, indicating the OS's readiness; it lets you [enter commands](#operating-system-commands) or [run programs](#running-program-files). For instance it is wise to start by looking at the file catalogue on the disk with the command `DIR`, or to read the included message by entering `TYPE READ.ME`.
 
 The prompt is any message issued by a program that shows the program is waiting for the user's next instructions. For example, entering `A` or `B` after the firmware monitor prompt `∗` launches the mini-assembler or the ROM BASIC interpreter; `T` boots an OS[^1]. Different programs have different prompts, whose use is described in their manuals.
 
@@ -47,17 +47,20 @@ The command processor (KP) exchanges information between the user and the operat
 `USER` — choose user number (0–15)  
 `SAVE` — save memory contents to a file (syntax: `SAVE n filename`)  
 
-For the tape operating system, additionally:
+Depending on the tape operating system,[^5] the following may also be available:
 
-`MEM` — general information about the tape  
 `OPEN` — open the tape  
-`CLOSE` — close the tape  
-`DIRS` — list system files in the catalogue  
 `LOAD` — load a file from tape into RAM  
 `RUN` — run the loaded program  
-`DUMP` — output the file contents in hexadecimal  
+`CLOSE` — close the tape  
+`MEM` — general information about the tape  
+`DIRS` — list system files in the catalogue  
+`CHECK` — calculate the catalogue checksum  
 `REST` — restore deleted files  
+`BLOAD` — load blocks into RAM  
+`DUMP` — output the file contents in hexadecimal  
 `BASIC` — launch the BASIC in ROM  
+`HELP` — display the list of commands  
 `MONID` — exit to the monitor  
 
 Data is kept on external storage as files, whose names have the form:
@@ -79,7 +82,7 @@ The file name contains up to eight characters and the extension (`EXT`) up to th
 `$$$` — temporary file  
 `COM` — command / program / executable file  
 
-Files reside on tapes or disks whose reader designator is a letter of the alphabet followed by a colon separating it from the file name (e.g. `A:` or `B:`). To change the active reader, enter the designator of the desired reader as a command. The result is that the active reader shown in the prompt changes — `A>`, `B>`, `C>` and so on.
+Files reside on tapes or disks whose reader designator is a letter of the alphabet followed by a colon separating it from the file name (e.g. `A:`, `B:`, or `T:` for tape). To change the active reader, enter the designator of the desired reader as a command. The result is that the active reader shown in the prompt changes — `A>`, `B>`, `C>` and so on.
 
 The location of a file on the disk in a reader is indicated by placing the device designator in front of the file name (`B:filename.EXT`).
 
@@ -156,7 +159,7 @@ The OS's default behaviour can be toggled using escape sequences (the `ESC` key,
 
 `ESC` `M` `0` — 40x24 screen layout  
 `ESC` `M` `1` — 53x24 screen layout  
-`ESC` `M` `2` — 64x20 screen layout (an 80x24 layout is also possible[^5])  
+`ESC` `M` `2` — 64x20 screen layout (an 80x24 layout is also possible[^6])  
 `ESC` `0` — disable the key-press tone  
 `ESC` `1` — enable the key-press tone  
 `ESC` `2` — disable screen scrolling  
@@ -174,4 +177,5 @@ _The above is largely a shortened and generalised version of the tape-OS manual 
 [^2]: [Интеллектуальный терминал для систем реального времени E5104](https://elektroonikamuuseum.ee/failid/juku/kirjandus/juku_e5104_rus_1.pdf) (1988); the most up-to-date memory table is in book 1, p. 25  
 [^3]: [Mikroarvuti JUKU](ekta_juku.pdf) (1987); software description on p. 13ff  
 [^4]: [JUKU E5104 keyboard in the MAME emulator](https://infoaed.ee/juku/layout.html) (2024)
-[^5]: [JUKU PC UTILITIES DISK #4](https://github.com/infoaed/juku3000/blob/master/docs/ekdos230.txt#L91-L112) (1989), note 1 on the 80x24 screen mode  
+[^5]: [Instructions for using the cassette-recorder utilities](makk.md#jlos-functions) (1987?)
+[^6]: [JUKU PC UTILITIES DISK #4](https://github.com/infoaed/juku3000/blob/master/docs/ekdos230.txt#L91-L112) (1989), note 1 on the 80x24 screen mode  

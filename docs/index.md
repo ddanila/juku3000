@@ -28,7 +28,7 @@ Related initiatives:
 * [Museum of Electronics](https://elektroonikamuuseum.ee/)
 * [University of Tartu Computer Museum](http://arvutimuuseum.ut.ee/)
 * [Tallinn Computer Museum](http://arvutimuuseum.ee/)
-* [Retroklubi/Retrocomputing Estonia](http://pushspace.com/)
+* [Retroklubi/Retrocomputing Estonia](http://pushspace.com/) (also in the [Zuckerberg reservation](https://www.facebook.com/groups/636411413155737))
 * [LVLup! video game museum](https://www.rara.ee/meist/asukohad/#lvlup-videomangude-muuseum)
 * [Dreams and reality. Childhood in the 90s](https://web.archive.org/web/20180204224850/https://www.mm.ee/naitused/naitus-unistused-ja-tegelikkus-90ndate-lapsepolv) (exhibition at the Tartu Toy Museum)
 * [Let's play?! Computer games from France and Germany](https://web.archive.org/web/20170825094230/https://kumu.ekm.ee/arhiiv/naitused-2013/mangime-arvutimangud-prantsusmaalt-ja-saksamaalt/) (Kumu computer game exhibition)

@@ -27,14 +27,14 @@ May      | At the school-computer competition [conference](https://www.etera.ee/
 June     | At the Popov Scientific and Technical Society competition, [first prize goes to JUKU and TARTU](https://dea.digar.ee/?a=d&d=rahvahaal19860903.2.11.4&e=-------et-25--1--txt-txIN%7ctxTI%7ctxAU%7ctxTA-------------)
 July     | "[With JUKU or...](https://arhiiv.err.ee/audio/vaata/kas-jukuga-voi)" — the early-year promise of 40 school computers, with the number to exceed 1000 the following year
 July     | "[JUKU microcomputer user manual](https://files.borjch.com/Mikroarvuti%20Juku%20E5101%20kasutamisjuhend%201988%20%28168lk%2C%20eesti%20k%29.pdf)" goes to typesetting
-November | RET re-acquires the technical documentation that had been lost in the meantime
+November | RET re-acquires the [technical documentation that had been lost in the meantime](dokumentatsioon.md#ekta-e5101)
 November | The first JUKU is set up — built at ESTRON, which was originally supposed to produce the cases
 
 ## 1987 — The lost models E5102 and E5103
 
 * Because of "[total indifference](https://www.etera.ee/zoom/19156/view?page=108&p=separate&tool=info&view=0,1175,2323,2716)" accompanying the change of management at RET, production does not begin
 * The bulk of the future school-computer JUKU's software is assembled
-* ESTRON and EKTA produce [small experimental and one-off batches](https://www.etera.ee/zoom/29230/view?page=84&p=separate&tool=info&view=0,0,2373,3411) of tape-OS JUKU and the more capable JUSS
+* ESTRON and EKTA produce [small experimental and one-off batches](https://www.etera.ee/zoom/29230/view?page=84&p=separate&tool=info&view=0,0,2373,3411) of the tape-OS [JUKU E5101](https://et.wikipedia.org/wiki/Juku_(arvuti)#/media/Fail:Estroni_JUKU_koos_kassetilugeja,_toiteploki_ja_monitoriga.jpg) and the more capable [JUSS E5102](https://elektroonikamuuseum.ee/arvuti_hajusjuhtimissusteem_satelliit/SATELLIIT-2%20-%20Microcomputer%20series%20for%20distributed%20control.pdf) and [JUSS E5103](https://elektroonikamuuseum.ee/juku_arvuti_juss_E5103.html)
 
 |||
 |-|-|
@@ -59,7 +59,7 @@ January             | EKDOS 2.29 (and in parallel at some point, RomBios 3.43m)
 May                 | "[JUKU's bumpy road](https://www.etera.ee/zoom/29230/view?page=82&p=separate&tool=info&view=0,0,2373,3411)" to production receives coverage in the party's mouthpiece
 September–October   | High-level languages and programming tools PASCAL, B80, BASCOM, F80, L80, SID, ASM
 October             | Demos, printer drivers, network OS
-November            | The Baltijets factory in Narva receives the JUKU technical documentation; the task of producing JUKU comes down from the USSR Council of Ministers
+November            | The Baltijets factory in Narva receives the [JUKU technical documentation](dokumentatsioon.md#baltijets-e5104); the task of producing JUKU comes down from the USSR Council of Ministers
 December            | The first 40 JUKU school computers [finally come off the Baltijets production line](https://dea.digar.ee/?a=d&d=rahvahaal19891111.2.17&srpos=8&e=-------et-25--1--txt-txIN-------------)
 
 ## 1989 — JUKU reaches the schools

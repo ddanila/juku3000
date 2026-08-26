@@ -59,11 +59,12 @@ plugins:
 nav:
     - Hello, Juhan!: index.md
     - JUKU life cycle: ajajoon.md
-    - Using EKDOS: juku-käsud.md
     - Running MAME: mame-käivitamine.md
+    - Using the system: juku-käsud.md
     - Recording videos: videod.md
+    - Documentation: dokumentatsioon.md
     - Reading disks: kettad.md
+    - Software catalog: tarkvara-kataloog.md
     - Games disc 2024: mängude-ketas-2024.md
     - Games disc 2025: porditud-mängud-2025.md
-    - Software catalog: tarkvara-kataloog.md
     - '👾 Try JUKU in your browser! 👾': 'https://infoaed.ee/juku'
